@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!-- Bootstrap CSS -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+        
+        <!-- Bootstrap Font Icon CSS -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+        
+        <title>Mehtab | Python Web Developer</title>
+
+        <style>
+            a {
+                text-decoration:none;
+            }
+
+            div.header {
+                font-family: sans-serif;             
+            }
+
+            div.headerleft {
+                margin-top: 220px; 
+                margin-bottom:340px;
+                text-align: center;
+            }
+
+            
+            @media screen and (min-width: 780px) {
+                p.name {
+                    font-size: 60px;
+                }
+
+                p.bio {
+                    font-size: 40px;
+                }
+
+                #know-more {
+                    padding: 15px;
+                    font-size: medium;
+                    border-radius: 30px;
+                    text-decoration: none;
+                    font-weight: bold;
+                    background-color: crimson;
+                    color:whitesmoke;
+                    font-family:sans-serif, Arial, Helvetica;
+                }
+    
+                #know-more:hover {
+                    padding: 15px;
+                    font-size: medium;
+                    border-radius: 30px;
+                    text-decoration: none;
+                    font-weight: bold;
+                    background-color: rgb(36, 191, 96);
+                    color:whitesmoke;
+                    font-family:sans-serif, Arial, Helvetica;
+                }
+
+            }
+
+            #about-me {
+                padding-top: 80px;
+                padding-bottom:110px;
+            }
+
+            div.Projects {
+                padding-top:40px;
+                padding-bottom: 130px;
+            }
+
+            @media screen and (max-width: 779px) {
+                p.name {
+                    font-size: 40px;
+                }
+                p.bio {
+                    font-size: 25px;
+                }
+                #know-more {
+                    padding: 12px;
+                    font-size: medium;
+                    border-radius: 30px;
+                    text-decoration: none;
+                    font-weight: bold;
+                    background-color: crimson;
+                    color:whitesmoke;
+                    font-family:sans-serif, Arial, Helvetica;
+                }
+    
+                #know-more:hover {
+                    padding: 12px;
+                    font-size: medium;
+                    border-radius: 30px;
+                    text-decoration: none;
+                    font-weight: bold;
+                    background-color: rgb(22, 237, 129);
+                    color:whitesmoke;
+                    font-family:sans-serif, Arial, Helvetica;
+                }
+                
+                #about-me {
+                    text-align: center;
+                }
+            }
+
+            #profile-image {
+                border-radius: 50%;
+                box-shadow: 1px 1px 10px 0.5px lightgray;
+                border:0px solid black;
+            }
+
+            div.intro {
+                font-size: large;
+                font-family: sans-serif;
+                margin-top: 40px;
+                
+            }
+
+            @keyframes bbc {
+                0% {background-color: rgba(220, 20, 60, 0.293); color:white;}
+                100% {background-color: crimson;color:white;}
+            }
+
+            #resume {
+                padding: 8px;
+                background-color: rgb(4, 228, 228);
+                border-radius: 30px;
+                box-shadow:1px 1px 10px 0.5px lightgray;
+                color:white;
+                
+            }
+
+            #upwork {
+                padding: 8px;
+                background-color: rgb(21, 218, 126);
+                border-radius: 30px;
+                box-shadow:1px 1px 10px 0.5px lightgray;
+                color:white;
+            }
+
+            #resume:hover, #upwork:hover {
+                padding: 8px; 
+                border-radius: 30px;
+                animation-name: bbc; 
+                animation-duration: 2s;
+                animation-fill-mode:both;
+            }
+
+
+            div.project {
+                box-shadow: 1px 1px 10px 1px lightgray; 
+                margin-top:20px;
+                padding: 20px; 
+                border-radius: 8px;
+            }
+            
+            i {
+                font-size:50px;
+            }
+
+            span {
+                padding:10px;
+            }
+            
+            .link-image {
+                border-radius: 50%;
+            }
+            .link-image:hover {
+                padding: 3px;
+                opacity: 0.8;
+                border-radius: 50%;
+                border: 2px solid white;
+            }
+
+            div.footer {
+                margin-top: 50px;
+                padding:90px;
+                background-color:rgba(4, 4, 4, 0.703);
+            }
+
+            @media (max-width: 599px) {
+                #large-screen {
+                    display:none;
+                }
+                span.skill {
+                    box-shadow:1px 1px 10px 1px gray;
+                    background-color: black;
+                    color:whitesmoke;
+                    border-radius: 15px;
+                    padding:15px;
+                }
+            }
+
+            @media (min-width: 600px) {
+                #smartphone {
+                    display:none;
+                }
+                span.skill {
+                    box-shadow:1px 1px 10px 1px gray;
+                    background-color: black;
+                    color:whitesmoke;
+                    padding:15px;
+                    padding-left:25px;
+                    padding-right:25px;
+                    margin:2px;
+                    font-size:large;
+                    border-radius: 20px;
+                }
+            }
+
+            span.skill:hover {
+                box-shadow:1px 1px 10px 0.5px rgb(255, 0, 0);
+            }
+
+            
+            div.skills {
+                box-shadow:1px 1px 10px 1px lightgray;
+                padding:40px;
+                border-radius:8px;
+                border-top: 5px solid rgb(187, 0, 255);
+
+            }
+            
+
+        </style>
+        
+    </head>
+    <body>
+        <div class="container">
+
+            <!-- Header Section -->
+            <div class="header">
+                <div class="container headerleft">
+
+                    <p class="name mb-0">Hi, I'm <span class="text-primary">Mehtab</span>.</p>
+                    <p class="bio">I'm a Python Web Developer.</p>
+
+                    <div class="mt-4">
+                        <a id="know-more" href="#about-me" alt="profile link">Know More</a>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- About Me Section -->
+            <div class="container" id="about-me">
+                <h1 class="text-center mb-4 mt-4">About Me</h1>
+
+                <div class="row" style="box-shadow:1px 1px 10px 1px lightgray; padding:40px; border-radius:8px; border-top:5px solid rgb(255, 0, 119);">
+
+                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 text-center">
+                        <img id="profile-image" src="profile image.jpg" width="300" height="300"  alt="Profile Image">
+                    </div>
+        
+                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 mb-4" >
+                        <div class="intro">
+                            <div class="mb-2"> I am a Freelance Python Web Developer well-versed with cutting-edge technologies and with a strong grasp on the fundamentals of Mathematics and Computer Science.</div>
+                            <div  class="mb-2">I enjoy solving problems and buliding solution-oriented softwares particularly websites using Python and Django.</div>
+                            <div class="mb-2">If you want to work with me,then <a href="mailto: itsmehtabahmad@gmail.com">Let's Talk</a>.</div>
+                            
+                            
+                            <div class="mt-3">
+                                <a id="resume" href="https://drive.google.com/file/d/1O7j8kl6pJvATLqgpvMYWzLpe1Kt03JWu/view?usp=sharing" alt="Resume">Resume</a>
+                                <a id="upwork" href="#" alt="Upwork">Upwork</a>
+                            </div>
+                            
+
+                        </div>
+                    </div>
+        
+                </div>
+            </div>
+
+            <!-- Projects Section -->          
+            <div class="Projects">
+
+                <div class="container">
+                    <h1 class="text-center">Projects</h1>
+                    <div class="row text-center">
+                            
+                        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                            <div class="project" style="border-top: 5px solid springgreen;">
+                                <i class="bi bi-hash"></i>
+                                <h4><a href="https://github.com/mehtabehmad/Hashbook" title="Hashbook Github">Hashbook</a></h4>
+                                <p>Django-based Jounral Writing Platform</p>
+                            </div>      
+                        </div>
+
+                        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                            <div class="project" style="border-top: 5px solid crimson;">
+                                <i class="bi bi-app-indicator"></i>
+                                <h4><a href="http://moondaily.herokuapp.com/" title="Moondaily">Moondaily</a></h4>
+                                <p>Web-based Idea Sharing Platform</p>
+                            </div>
+                        </div>
+
+                        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                            <div class="project" style="border-top: 5px solid rgba(24, 177, 233, 0.998);">
+                                <i class="bi bi-bank2"></i>
+                                <h4><a href="#" title="Under Development">BookMe</a></h4>
+                                <p>Online Marketplace for Hotel Booking</p>
+                            </div> 
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- Education Section -->
+            <div class="container education mb-5">
+                <h1 class="text-center mb-4">Education</h1>
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <div class="educlass" style="box-shadow:1px 1px 10px 1px lightgray; padding:20px; border-radius:8px; border-top: 5px solid rgb(3, 188, 89)">
+                            <h4 class="text-primary text-center">BSc - Management Science</h4>
+                            <p><i class="bi bi-bank" style="font-size:15px; font-style: normal; font-weight: bold;"> Lahore University of Mangement Science (LUMS)</i></p>
+                            <p  class="lead" style="font-style:italic;">Software development is the process of desinging, testing, deploying, and maintaing softwares.<p>
+                            <p>Activites: Computer Programming, Developers Club </p>
+                        </div>
+                    </div>
+                </div>    
+                    
+            </div>
+
+        
+
+            <!-- Skillset Section -->
+            <div class="container Skillset">
+                <h1 class="text-center">Skillset</h1>
+                    <div class="skills mt-4 mb-5 text-center">
+
+                        <div id="large-screen">
+                            <span class="skill">Web Development</span> <span class="skill">Problem Solving</span>
+                            <span class="skill">Python</span> <span class="skill">Django</span><hr style="color:white;">
+                            <span class="skill">HTML5</span> <span class="skill">CSS3</span>
+                            <span class="skill">Bootstrap</span> <span class="skill">JavaScript</span>
+                            <span class="skill">SQL</span> <span class="skill">Git</span> 
+                        </div>
+                        <div id="smartphone">
+
+                            <span class="skill">Web Development</span> <span class="skill">Python</span><hr style="color:white;">
+                            <span class="skill">Problem Solving</span> <span class="skill">Django</span><hr style="color:white;">
+                                 
+                            <span class="skill">JavaScript</span> <span class="skill">HTML5</span> <span class="skill">CSS3</span>  
+                            
+                            <hr style="color:white;">
+                            <span class="skill">Bootstrap</span> <span class="skill">Git</span> <span class="skill">SQL</span>
+                        </div>
+                    </div>
+            </div>
+
+        </div>
+        <!-- Footer Section -->
+        <div class="footer">
+            <div class="text-center">
+                <a href="https://www.github.com/mehtabehmad/" title="Github Profile"><img class="link-image" src="github.png" width="50" height="50" alt="Github"></a>
+                <a href="https://www.linkedin.com/in/mehtabehmad/" title="LinkedIn Profile"><img class="link-image" src="linkedin.png" width="50" height="50" alt="LinkedIn"></a>
+                <a href="https://www.facebook.com/mhtabehmad/" title="Facebook Profile"><img class="link-image" src="facebook.png" width="50" height="50" alt="Facebook"></a>
+                <a href="https://www.instagram.com/mehtabehmad/" title="Instagram Profile"><img class="link-image" src="instagram01.png" width="50" height="50" alt="Instagram"></a>
+                
+                <hr style="color:gray;">
+
+                <p style="color:gray;">2022 - Mehtab Ahmad</p>
+            </div>
+        </div>
+    
+        <!-- Bootstrap JS Bundle with Popper -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    </body>
+</html>
