@@ -595,6 +595,124 @@
                 margin-top: 20px;
             }
         }
+    
+        /* Mobile Optimization Additions */
+        @media (max-width: 767px) {
+            /* Education Section Adjustments */
+            .edu-card {
+                padding: 20px;
+                margin: 15px auto;
+            }
+
+            .edu-header {
+                gap: 15px;
+                padding: 15px 0;
+            }
+
+            .lums-logo-container {
+                width: 90px;
+                height: 90px;
+                padding: 10px;
+            }
+
+            .edu-timeline {
+                padding: 10px 15px;
+                font-size: 14px;
+            }
+
+            .edu-timeline::before {
+                font-size: 10px;
+                padding: 2px 8px;
+            }
+
+            .edu-courses {
+                grid-template-columns: 1fr;
+            }
+
+            .edu-courses li {
+                padding: 12px 15px;
+                font-size: 14px;
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .course-code {
+                margin-top: 8px;
+                font-size: 11px;
+                padding: 3px 8px;
+            }
+
+            /* Project Cards Adjustments */
+            .project-card {
+                padding: 20px;
+            }
+
+            .project-features li {
+                font-size: 13px;
+            }
+
+            .project-tech {
+                gap: 6px;
+            }
+
+            .tech-item {
+                padding: 4px 10px;
+                font-size: 13px;
+            }
+
+            /* General Section Padding */
+            .section-container {
+                padding: 60px 15px;
+            }
+
+            /* About Section */
+            .about-photo {
+                width: 120px;
+                height: 120px;
+            }
+
+            .about-text {
+                font-size: 16px;
+            }
+
+            /* Skills Section */
+            .skill-card {
+                padding: 20px;
+            }
+
+            .skill-card h4 {
+                font-size: 18px;
+            }
+        }
+
+        /* Additional Mobile Fixes */
+        @media (max-width: 575px) {
+            .edu-courses li {
+                font-size: 13px;
+            }
+
+            .project-card h3 {
+                font-size: 1.25rem;
+            }
+
+            .btn-about {
+                width: 100%;
+                text-align: center;
+            }
+
+            .about-buttons {
+                gap: 10px;
+                width: 100%;
+            }
+        }
+
+        /* Prevent Horizontal Overflow */
+        .edu-courses,
+        .project-features {
+            overflow-wrap: break-word;
+            word-wrap: break-word;
+        }
+
     </style>
 </head>
 <body>
