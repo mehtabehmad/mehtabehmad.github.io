@@ -1,428 +1,885 @@
 <!DOCTYPE html>
 <html lang="en-US">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mehtab | Data Analyst & Web Developer</title>
+    <meta name="description" content="Mehtab Ahmad - Management Science student, Aspiring Data Analyst and Python web developer portfolio. Explore projects and skills in data analysis and web development.">
+    
+    <!-- Bootstrap & Google Fonts -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-dark: #141E30;
+            --primary-medium: #243B55;
+            --accent: #1E90FF;
+        }
 
-        <!-- Bootstrap CSS -->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-        
-        <!-- Bootstrap Font Icon CSS -->
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
-        
-        <!-- Font Awesome Icons -->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        
-        <title>Mehtab | Python Web Developer</title>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8f9fa;
+            color: #343a40;
+        }
+        .hero-section {
+            text-align: center;
+            padding: 120px 20px;
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary-medium));
+            color: white;
+        }
+        .hero-title {
+            font-size: 50px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        .btn-custom {
+            padding: 12px 24px;
+            border-radius: 30px;
+            font-size: 18px;
+            font-weight: bold;
+            background-color: white;
+            color: var(--primary-medium);
+            border: 2px solid var(--primary-medium);
+            transition: 0.3s;
+        }
+        .btn-custom:hover {
+            background-color: var(--primary-dark);
+            color: white;
+        }
+        .section-title {
+            text-align: center;
+            font-size: 32px;
+            margin-top: 50px;
+            font-weight: bold;
+            color: var(--primary-medium);
+        }
+        /* Ensure Section Title Consistency */
+        #projects .section-title {
+            margin: 50px 0 30px !important;
+        }
+        .footer {
+            text-align: center;
+            padding: 40px;
+            background-color: #f1f1f1;
+            margin-top: 50px;
+        }
+    
+        /* About Section */
+        .about-card {
+            background: #f0f0f0;
+            padding: 30px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            margin-top: 50px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .about-photo {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--primary-medium);
+            margin-bottom: 15px;
+        }
+        .about-text {
+            font-size: 18px;
+            color: #333;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        .highlight {
+            color: var(--primary-medium);
+            font-weight: bold;
+        }
+        .about-buttons {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        .btn-about {
+            padding: 12px 20px;
+            font-size: 16px;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: 0.3s;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            background: var(--primary-medium);
+            color: white;
+        }
+        .btn-about:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+        }
 
-        <style>
-            a {
-                text-decoration:none;
+        /* Enhanced Education Section */
+        .edu-card {
+            background: linear-gradient(145deg, #ffffff, #f8f9fa);
+            padding: 35px;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+            margin: 30px auto;
+            max-width: 1000px;
+            position: relative;
+            overflow: hidden;
+            border-left: 6px solid var(--primary-medium);
+            transition: transform 0.3s ease;
+        }
+
+        .edu-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .edu-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid rgba(36, 59, 85, 0.1);
+        }
+
+        .degree-container {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .degree-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(45deg, var(--primary-medium), var(--primary-dark));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+        }
+
+        .edu-header-content {
+            flex: 1;
+        }
+
+        .edu-header h4 {
+            font-size: 24px;
+            margin: 0;
+            color: var(--primary-dark);
+            font-weight: 700;
+        }
+
+        .edu-institution {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 18px;
+            color: var(--primary-medium);
+            margin: 15px 0;
+        }
+
+        .edu-institution i {
+            color: var(--primary-dark);
+        }
+
+        .edu-duration {
+            background: linear-gradient(45deg, #1E90FF, #00BFFF);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 25px;
+            font-size: 14px;
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(30, 144, 255, 0.3);
+        }
+
+        .edu-subtitle {
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--primary-dark);
+            margin: 25px 0 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .edu-subtitle i {
+            color: var(--primary-medium);
+        }
+
+        .edu-courses {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 15px;
+        }
+
+        .edu-courses li {
+            background: rgba(36, 59, 85, 0.05);
+            padding: 15px 20px;
+            border-radius: 8px;
+            font-size: 15px;
+            font-weight: 500;
+            color: var(--primary-dark);
+            transition: all 0.3s ease;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .edu-courses li:before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 3px;
+            background: var(--primary-medium);
+            transition: width 0.3s ease;
+        }
+
+        .edu-courses li:hover {
+            background: rgba(36, 59, 85, 0.1);
+            transform: translateX(8px);
+        }
+
+        .edu-courses li:hover:before {
+            width: 6px;
+        }
+
+        .course-name {
+            flex: 1;
+            margin: 0 15px;
+        }
+
+        .course-code {
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 12px;
+            font-weight: 600;
+            color: white;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.15);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            min-width: 65px;
+            text-align: center;
+        }
+
+        /* Updated Education Icons */
+        .degree-icon {
+            background: linear-gradient(45deg, #243B55, #141E30); /* Darker gradient */
+        }
+
+        .edu-institution img {
+            height: 24px;
+            width: auto;
+            margin-right: 10px;
+        }
+
+        /* Projects Section */
+        .projects-section {
+            padding: 60px 0;
+        }
+        .projects-grid {
+            display: grid;
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        .project-card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease;
+            border-left: 4px solid var(--primary-medium);
+        }
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
+        .project-tag {
+            display: inline-block;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+        }
+        .academic-tag {
+            background: linear-gradient(45deg, var(--primary-medium), #2c5364);
+            color: white;
+        }
+        .personal-tag {
+            background: linear-gradient(45deg, #1E90FF, #00BFFF);
+            color: white;
+        }
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 15px 0;
+        }
+        .tech-item {
+            background: #f4f6f9;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 14px;
+            color: var(--primary-dark);
+        }
+        .project-link {
+            color: var(--primary-medium);
+            text-decoration: none;
+            font-weight: bold;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: 0.3s;
+        }
+        .project-link:hover {
+            color: var(--primary-dark);
+        }
+
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            gap: 20px;
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+        .skill-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+        }
+        .skill-card::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(to right, var(--primary-medium), var(--primary-dark));
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+        .skill-card:hover {
+            transform: translateY(-10px);
+        }
+        .skill-card:hover::before {
+            transform: scaleX(1);
+        }
+        .skill-card i {
+            font-size: 36px;
+            margin-bottom: 15px;
+            color: var(--primary-medium);
+            transition: color 0.3s ease;
+        }
+        .skill-card h4 {
+            color: var(--primary-dark);
+            margin: 10px 0;
+            font-size: 20px;
+        }
+        .skill-card p {
+            color: #666;
+            font-size: 14px;
+            line-height: 1.4;
+        }
+
+        /* Update Footer Styles */
+        .footer a {
+            color: var(--primary-medium);
+            transition: color 0.3s ease;
+        }
+
+        .footer a:hover {
+            color: var(--primary-dark);
+        }
+
+        /* Fix Footer Underline */
+        .footer a {
+            text-decoration: none !important;
+        }
+
+        /* styles for the project section */
+        .project-description {
+            position: relative;
+            max-height: 100px;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+        
+        .project-description::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 30px;
+            background: linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255,1));
+        }
+
+        .project-card.expanded .project-description {
+            max-height: 500px;
+        }
+
+        .project-card.expanded .project-description::after {
+            display: none;
+        }
+
+        .read-more {
+            color: var(--primary-medium);
+            cursor: pointer;
+            font-weight: 600;
+            display: inline-block;
+            margin-top: 10px;
+        }
+
+        .read-more:hover {
+            color: var(--primary-dark);
+        }
+
+        .project-features {
+            padding-left: 20px;
+            margin: 10px 0;
+        }
+
+        .project-features li {
+            margin-bottom: 6px;
+            font-size: 14px;
+        }
+
+        /* Responsive Design */
+        @media (min-width: 992px) {
+            .skills-grid,
+            .projects-grid {
+                grid-template-columns: repeat(3, 1fr);
             }
-
-            div.header {
-                font-family: sans-serif;             
+        }
+        @media (max-width: 991px) and (min-width: 768px) {
+            .skills-grid,
+            .projects-grid {
+                grid-template-columns: repeat(2, 1fr);
             }
+            .edu-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+            .edu-duration {
+                align-self: flex-start;
+            }
+        }
+        @media (max-width: 767px) {
+            .skills-grid,
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+            .hero-title {
+                font-size: 40px;
+            }
+            .edu-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+            .edu-duration {
+                align-self: flex-start;
+            }
+            .edu-courses li {
+                flex-wrap: wrap;
+                gap: 8px;
+            }
+            .course-name {
+                flex: 0 0 100%;
+                margin: 0;
+            }
+            .course-code {
+                margin-left: auto;
+            }
+        }
 
-            div.headerleft {
-                margin-top: 220px; 
-                margin-bottom:340px;
+        /* Education Header Redesign */
+        .edu-header {
+            display: grid;
+            grid-template-columns: auto 1fr auto;
+            gap: 30px;
+            align-items: center;
+            padding: 25px 0;
+        }
+
+        .lums-logo-container {
+            width: 120px;
+            height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: white;
+            border-radius: 15px;
+            padding: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+
+        .lums-logo {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .degree-info {
+            padding: 0 20px;
+            border-left: 3px solid var(--primary-medium);
+            border-right: 3px solid var(--primary-medium);
+        }
+
+        .edu-timeline {
+            background: linear-gradient(45deg, var(--primary-medium), var(--primary-dark));
+            color: white;
+            padding: 15px 25px;
+            border-radius: 30px;
+            text-align: center;
+            position: relative;
+        }
+
+        .edu-timeline::before {
+            content: '🎓 Timeline';
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: white;
+            color: var(--primary-dark);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        @media (max-width: 768px) {
+            .about-columns {
+                grid-template-columns: 1fr;
+            }
+            
+            .edu-header {
+                grid-template-columns: 1fr;
                 text-align: center;
             }
-
             
-            @media screen and (min-width: 780px) {
-                p.name {
-                    font-size: 60px;
-                }
-
-                p.bio {
-                    font-size: 40px;
-                }
-
-                #know-more {
-                    padding: 15px;
-                    font-size: medium;
-                    border-radius: 30px;
-                    text-decoration: none;
-                    font-weight: bold;
-                    background-color: crimson;
-                    color:whitesmoke;
-                    font-family:sans-serif, Arial, Helvetica;
-                }
-    
-                #know-more:hover {
-                    padding: 15px;
-                    font-size: medium;
-                    border-radius: 30px;
-                    text-decoration: none;
-                    font-weight: bold;
-                    background-color: rgb(36, 191, 96);
-                    color:whitesmoke;
-                    font-family:sans-serif, Arial, Helvetica;
-                }
-
-            }
-
-            #about-me {
-                padding-top: 80px;
-                padding-bottom:110px;
-            }
-
-            div.Projects {
-                padding-top:40px;
-                padding-bottom: 130px;
-            }
-
-            @media screen and (max-width: 779px) {
-                p.name {
-                    font-size: 40px;
-                }
-                p.bio {
-                    font-size: 23px;
-                }
-                #know-more {
-                    padding: 12px;
-                    font-size: medium;
-                    border-radius: 30px;
-                    text-decoration: none;
-                    font-weight: bold;
-                    background-color: crimson;
-                    color:whitesmoke;
-                    font-family:sans-serif, Arial, Helvetica;
-                }
-    
-                #know-more:hover {
-                    padding: 12px;
-                    font-size: medium;
-                    border-radius: 30px;
-                    text-decoration: none;
-                    font-weight: bold;
-                    background-color: rgb(22, 237, 129);
-                    color:whitesmoke;
-                    font-family:sans-serif, Arial, Helvetica;
-                }
-                
-                #about-me {
-                    text-align: center;
-                }
-
-                div.intro {
-                    text-align: center;
-                }
-            }
-
-            #profile-image {
-                border-radius: 50%;
-                box-shadow: 1px 1px 10px 1px gray;
-                border:0px solid black;
-
-            }
-
-
-            div.intro {
-                font-size: large;
-                font-family: sans-serif;
-                margin-top: 25px;
-                
-            }
-
-            @keyframes bbc {
-                0% {background-color: rgba(220, 20, 60, 0.293); color:white;}
-                100% {background-color: crimson;color:white;}
-            }
-
-            #resume {
-                padding: 8px;
-                background-color: rgb(4, 228, 228);
-                border-radius: 30px;
-                box-shadow:1px 1px 10px 0.5px lightgray;
-                color:white;
-                
-            }
-
-            #upwork {
-                padding: 8px;
-                background-color: rgb(21, 218, 126);
-                border-radius: 30px;
-                box-shadow:1px 1px 10px 0.5px lightgray;
-                color:white;
-            }
-
-            #resume:hover, #upwork:hover {
-                padding: 8px; 
-                border-radius: 30px;
-                animation-name: bbc; 
-                animation-duration: 2s;
-                animation-fill-mode:both;
-            }
-
-
-            div.project {
-                box-shadow: 1px 1px 10px 1px lightgray; 
-                margin-top:20px;
-                padding: 20px; 
-                border-radius: 8px;
+            .lums-logo-container {
+                margin: 0 auto;
             }
             
-            i {
-                font-size:50px;
+            .degree-info {
+                border: none;
+                padding: 20px 0;
             }
             
-            .link-image {
-                border-radius: 50%;
+            .edu-timeline {
+                margin-top: 20px;
             }
-            .link-image:hover {
-                padding: 3px;
-                opacity: 0.8;
-                border-radius: 50%;
-                border: 2px solid white;
-            }
+        }
+    </style>
+</head>
+<body>
+    <div class="hero-section">
+        <p class="hero-title">Hi, I'm Mehtab.</p>
+        <p class="lead">Aspiring Data Analyst & Web Developer</p>
+        <a class="btn btn-custom" href="#about-me">Know More</a>
+    </div>
 
-            div.footer {
-                margin-top: 50px;
-                padding:90px;
-                background-color:rgba(4, 4, 4, 0.703);
-            }
-
-            @media (max-width: 599px) {
-                #large-screen {
-                    display:none;
-                }
-                span.skill {
-                    box-shadow:1px 1px 10px 1px gray;
-                    background-color: black;
-                    color:whitesmoke;
-                    border-radius: 10px;
-                    padding:9px;
-                }
-            }
-
-            @media (min-width: 600px) {
-                #smartphone {
-                    display:none;
-                }
-                span.skill {
-                    box-shadow:1px 1px 10px 1px gray;
-                    background-color: black;
-                    color:whitesmoke;
-                    padding:15px;
-                    padding-left:25px;
-                    padding-right:25px;
-                    margin:2px;
-                    font-size:large;
-                    border-radius: 20px;
-                }
-            }
-
-            
-            div.skills {
-                box-shadow:1px 1px 10px 1px lightgray;
-                padding:40px;
-                border-radius:8px;
-
-            }
-
-            div.skill-item {
-                font-size: 24px;
-                font-weight: 300px;
-                padding:50px;
-                margin-top: 8px;
-                margin-bottom: 8px;
-                margin-left: 2px;
-                margin-right: 2px;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                border: 0px solid black;
-                border-radius: 8px;
-                box-shadow: 1px 1px 10px 1px lightgray;
-            }
-
-            div.skill-item:hover {
-                cursor: pointer;
-            }
-            
-
-        </style>
-        
-    </head>
-    <body>
-        <div class="container">
-
-            <!-- Header Section -->
-            <div class="header">
-                <div class="container headerleft">
-
-                    <p class="name mb-0">Hi, I'm <span class="text-primary">Mehtab</span>.</p>
-                    <p class="bio">I'm a Python Web Developer.</p>
-
-                    <div class="mt-4">
-                        <a id="know-more" href="#about-me" alt="profile link">Know More</a>
-                    </div>
-
-                </div>
-            </div>
-
-            <!-- About Me Section -->
-            <div class="container" id="about-me">
-                <h1 class="text-center mb-4 mt-4">About Me</h1>
-
-                <div style="box-shadow:1px 1px 10px 1px lightgray; padding-top:40px; padding-bottom:40px; padding-right:20px;padding-left:20px; border-radius:8px;">
-
-                
-                <div class="row">
-
-                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 text-center">
-                        <img id="profile-image" src="image.jfif" width="250" height="250"  alt="Profile Image">
-                    </div>
-        
-                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 mb-4" >
-                        <div class="intro">
-                            <div class="mb-2"> I am a Freelance Python Web Developer well-versed with cutting-edge technologies and with a strong grasp on the fundamentals of Mathematics and Computer Science.</div>
-                            <div  class="mb-2">I enjoy solving problems and buliding solution-oriented softwares particularly websites using Python and Django.</div>
-                            <!--<div class="mb-2">If you want to work with me,then <a href="mailto: itsmehtabahmad@gmail.com">Let's Talk</a>.</div>-->
-                            
-                            
-                            <div class="mt-3">
-                                <a  class="btn btn-outline-danger" href="https://drive.google.com/file/d/1AWC3Nz6LgR6YqWEQBjFyvY82j4ZSvC4X/view?usp=sharing" alt="Resume">Resume</a>
-                                <a  class="btn btn-outline-success" href="https://www.upwork.com/freelancers/~010778beb4dd6b629b" alt="Upwork">Upwork</a>
-                            </div>
-                            
-
-                        </div>
-                    </div>
-        
-                </div>
-                </div>
-            </div>
-
-            <!-- Projects Section -->          
-            <div class="Projects">
-
-                <div class="container">
-                    <h1 class="text-center">Projects</h1>
-                    <div class="row text-center">
-                            
-                        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-                            <div class="project" style="border-top: 5px solid springgreen;">
-                                <i class="bi bi-hash"></i>
-                                <h4><a href="https://github.com/mehtabehmad/Hashbook" title="Hashbook Github">Hashbook</a></h4>
-                                <p>Online Journal Writing Platform</p>
-                            </div>      
-                        </div>
-
-                        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-                            <div class="project" style="border-top: 5px solid crimson;">
-                                <i class="bi bi-app-indicator"></i>
-                                <h4><a href="http://moondaily.herokuapp.com/" title="Moondaily">Moondaily</a></h4>
-                                <p>Web-based Idea Sharing Platform</p>
-                            </div>
-                        </div>
-
-                        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-                            <div class="project" style="border-top: 5px solid rgba(24, 177, 233, 0.998);">
-                                <i class="bi bi-bank2"></i>
-                                <h4><a href="#" title="Under Development">BookMe</a></h4>
-                                <p>Online Marketplace for Hotel Booking</p>
-                            </div> 
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-
-            <!-- Education Section -->
-            <div class="container education mb-5">
-                <h1 class="text-center mb-4">Education</h1>
-                <div class="row">
-                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                        <div class="educlass" style="box-shadow:1px 1px 10px 1px lightgray; padding:20px; border-radius:8px;">
-                            <h4 class="text-primary text-center">BSc - Management Science</h4>
-                            <p><i class="bi bi-bank" style="font-size:15px; font-style: normal; font-weight: bold;"> Lahore University of Mangement Science (LUMS)</i></p>
-                            <p  class="lead" style="font-style:italic;">Software development is the process of desinging, testing, deploying, and maintaing softwares.<p>
-                            <p>Activites: Computer Programming, Developers Club </p>
-                        </div>
-                    </div>
-                </div>    
-                    
-            </div>
-
-        
-            <!-- Skill Section -->
-            <div class="contianer">
-                <h1 class="text-center">Skillset</h1>
-                <div class="row">
-                    <div class="col-lg-3 col-md-3 col-sm-4">
-                        <div class="skill-item">Problem Solving</div>
-                    </div>
-                    <div class="col-lg-3 col-md-3 col-sm-6">
-                        <div class="skill-item">Web Development</div>
-                    </div>
-                    <div class="col-lg-3 col-md-3 col-sm-6">
-                        <div class="skill-item">Python</div>
-                    </div>
-                    <div class="col-lg-3 col-md-3 col-sm-6">
-                        <div class="skill-item">Django</div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-3 col-md-3 col-sm-6">
-                        <div class="skill-item">HTML</div>
-                    </div>
-                    <div class="col-lg-3 col-md-3 col-sm-6">
-                        <div class="skill-item">CSS</div>
-                    </div>
-                    <div class="col-lg-3 col-md-3 col-sm-6">
-                        <div class="skill-item">JavaScript</div>
-                    </div>
-                    <div class="col-lg-3 col-md-3 col-sm-6">
-                        <div class="skill-item">Bootstrap</div>
-                    </div>
-                </div>
-            </div>
-            <!-- Skillset Section 
-            <div class="container Skillset">
-                <h1 class="text-center">Skillset</h1>
-                    <div class="skills mt-4 mb-5">
-
-                        <div id="large-screen" class="text-center">
-                            <span class="skill">Web Development</span> <span class="skill">Problem Solving</span>
-                            <span class="skill">Python</span> <span class="skill">Django</span><hr style="color:white;">
-                            <span class="skill">HTML5</span> <span class="skill">CSS3</span>
-                            <span class="skill">Bootstrap</span> <span class="skill">JavaScript</span>
-                            <span class="skill">SQL</span> <span class="skill">Git</span> 
-                        </div>
-                        <div id="smartphone" class="text-center">
-
-                            <span class="skill">Web Development</span> <span class="skill">Python</span><hr style="color:white;">
-                            <span class="skill">Problem Solving</span> <span class="skill">Django</span><hr style="color:white;">
-                                 
-                            <span class="skill">JavaScript</span> <span class="skill">HTML5</span> <span class="skill">CSS3</span>  
-                            
-                            <hr style="color:white;">
-                            <span class="skill">Bootstrap</span> <span class="skill">Git</span> <span class="skill">SQL</span>
-                        </div>
-                    </div>
-            </div>
-            -->
-
-        </div>
-        <!-- Footer Section -->
-        <div class="footer">
-            <div class="text-center">
-                <a href="https://www.github.com/mehtabehmad/" title="Github Profile"><img class="link-image" src="github.png" width="50" height="50" alt="Github"></a>
-                <a href="https://www.linkedin.com/in/mehtabehmad/" title="LinkedIn Profile"><img class="link-image" src="linkedin.png" width="50" height="50" alt="LinkedIn"></a>
-                <!--<a href="https://www.facebook.com/mhtabehmad/" title="Facebook Profile"><img class="link-image" src="facebook.png" width="45" height="45" alt="Facebook"></a>-->
-                <a href="https://www.instagram.com/mehtabehmad/" title="Instagram Profile"><img class="link-image" src="instagram01.png" width="50" height="50" alt="Instagram"></a>
-                
-                <hr style="color:gray;">
-
-                <p style="color:gray;">2023 - Mehtab Ahmad</p>
+    <div class="container" id="about-me">
+        <div class="about-card">
+            <img src="profile_image.jpg" alt="Mehtab Ahmad Professional Photo" class="about-photo">
+            <h2 class="section-title">About Me</h2>
+            <p class="about-text">
+                A <strong>Management Science student</strong> at <strong>LUMS</strong>, pursuing a minor in <strong>Computer Science</strong>. With a keen interest in <span class="highlight">problem-solving, data analysis, and web development</span>, I strive to create <span class="highlight">efficient digital solutions</span> that address real-world challenges.
+            </p>
+            <p class="about-text">
+                Looking for opportunities to apply my skills in meaningful and impactful projects.
+            </p>
+           
+            <div class="about-buttons">
+                <a href="https://drive.google.com/file/d/10ZuUUtB2A49Ghk9YHQiaur56YnPDoUmm/view?usp=share_link" 
+                   class="btn-about" 
+                   target="_blank" 
+                   rel="noopener noreferrer"
+                   title="View Updated Resume">
+                    <i class="fas fa-file-alt"></i> View Resume
+                </a>
+                <a href="mailto:itsmehtabahmad@gmail.com" 
+                   class="btn-about" 
+                   title="Send Email">
+                    <i class="fas fa-envelope"></i> Contact via Email
+                </a>
             </div>
         </div>
-    
-        <!-- Bootstrap JS Bundle with Popper -->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
-    </body>
-</html>
+    </div>    
+
+    <div class="container" id="education">
+        <h2 class="section-title">Education</h2>
+        <div class="edu-card">
+            <div class="edu-header">
+                <div class="lums-logo-container">
+                    <img src="lums logo.png" alt="LUMS Logo" class="lums-logo">
+                </div>
+                
+                <div class="degree-info">
+                    <h4>BSc (Hons.) Management Science</h4>
+                    <div class="edu-institution">
+                        Lahore University of Management Sciences
+                    </div>
+                </div>
+
+                <div class="edu-timeline">
+                    September 2021 - May 2026<br>
+                    <small>(Expected Graduation)</small>
+                </div>
+            </div>
+
+            <h5 class="edu-subtitle">
+                <i class="fas fa-book-open"></i>
+                Key Courses
+            </h5>
+            
+            <ul class="edu-courses">
+                <li>
+                    <i class="fas fa-laptop-code"></i>
+                    <span class="course-name">Computational Problem Solving</span>
+                    <span class="course-code" style="background: linear-gradient(45deg, #FF512F, #F09819);">CS100</span>
+                </li>
+                <li>
+                    <i class="fas fa-code"></i>
+                    <span class="course-name">Introduction to Programming</span>
+                    <span class="course-code" style="background: linear-gradient(45deg, #1E90FF, #00BFFF);">CS200</span>
+                </li>
+                <li>
+                    <i class="fas fa-chart-line"></i>
+                    <span class="course-name">Marketing Models</span>
+                    <span class="course-code" style="background: linear-gradient(45deg, #FF416C, #FF4B2B);">MKTG 343</span>
+                </li>
+                <li>
+                    <i class="fas fa-comments"></i>
+                    <span class="course-name">Business Communication</span>
+                    <span class="course-code" style="background: linear-gradient(45deg, #00b09b, #96c93d);">MGMT 212</span>
+                </li>
+                <li>
+                    <i class="fas fa-chart-bar"></i>
+                    <span class="course-name">Probability and Statistics</span>
+                    <span class="course-code" style="background: linear-gradient(45deg, #da22ff, #9733ee);">DISC 203</span>
+                </li>
+                <li>
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="course-name">Principles of Marketing</span>
+                    <span class="course-code" style="background: linear-gradient(45deg, #f46b45, #eea849);">MKTG 201</span>
+                </li>
+                <li>
+                    <i class="fas fa-database"></i>
+                    <span class="course-name">Data Analytics for New Product Development</span>
+                    <span class="course-code" style="background: linear-gradient(45deg, #1D976C, #93F9B9);">MKTG 345</span>
+                </li>
+                <li>
+                    <i class="fas fa-brain"></i>
+                    <span class="course-name">Principles and Techniques of Data Science</span>
+                    <span class="course-code" style="background: linear-gradient(45deg, #8E2DE2, #4A00E0);">CS 334</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="container projects-section" id="projects">
+        <h2 class="section-title">Featured Projects</h2>
+        <div class="projects-grid">
+            <!-- Project 1 - Hashbook -->
+            <!-- Project 1 - Hashbook -->
+            <div class="project-card">
+                <span class="project-tag personal-tag">Personal</span>
+                <h3><i class="fas fa-hashtag"></i> Hashbook</h3>
+                <div class="project-tech">
+                    <span class="tech-item">Python</span>
+                    <span class="tech-item">Django</span>
+                    <span class="tech-item">Bootstrap</span>
+                    <span class="tech-item">PostgreSQL</span>
+                </div>
+
+                <div class="project-description">
+                    <p>A dynamic idea-sharing platform featuring:</p>
+                    <ul class="project-features">
+                        <li>User authentication and profile management</li>
+                        <li>Full CRUD functionality for posts</li>
+                        <li>Interactive social features (likes, comments, hashtags)</li>
+                        <li>Responsive and mobile-friendly UI with Bootstrap</li>
+                        <li>Optimized database management using PostgreSQL</li>
+                    </ul>
+                </div>
+
+                <span class="read-more" onclick="this.closest('.project-card').classList.toggle('expanded')">
+                    Read More
+                </span>
+
+                <a href="https://github.com/mehtabehmad/Hashbook.git" class="project-link" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-github"></i> View Code
+                </a>
+
+                <script>
+                    document.querySelectorAll('.read-more').forEach(btn => {
+                        btn.addEventListener('click', function() {
+                            const card = this.closest('.project-card');
+                            if(card.classList.contains('expanded')) {
+                                card.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                            }
+                        });
+                    });
+                </script>        
+            </div>
+
+
+            <!-- Project 2 - FemRides -->
+            <div class="project-card">
+                <span class="project-tag academic-tag">Academic</span>
+                <h3><i class="fas fa-car-side"></i> FemRides Analytics</h3>
+                <div class="project-tech">
+                    <span class="tech-item">R Programming</span>
+                    <span class="tech-item">Sawtooth</span>
+                    <span class="tech-item">mlogit</span>
+                    <span class="tech-item">Market Research</span>
+                    <span class="tech-item">Data Analysis</span>
+                </div>
+                
+                <div class="project-description">
+                    <p>Women-focused ride-hailing service analysis featuring:</p>
+                    <ul class="project-features">
+                        <li>Choice-based conjoint analysis (300 respondents)</li>
+                        <li>Market share simulation model (16.1% projected)</li>
+                        <li>Competitive benchmarking vs Yango/InDriver/Careem</li>
+                        <li>Dynamic pricing strategy development</li>
+                    </ul>
+                </div>
+                
+                <span class="read-more" onclick="this.closest('.project-card').classList.toggle('expanded')">
+                    Read More
+                </span>
+            
+                <a href="https://drive.google.com/file/d/1MaBajfcxYlxzemm_G0NfkrxlOkKXXc4U/view?usp=share_link" class="project-link" target="_blank" rel="noopener noreferrer">
+                    <i class="fas fa-file-alt"></i> View Project
+                </a>
+                <script>
+                    // Add smooth scroll for expanded cards
+                    document.querySelectorAll('.read-more').forEach(btn => {
+                        btn.addEventListener('click', function() {
+                            const card = this.closest('.project-card');
+                            if(card.classList.contains('expanded')) {
+                                card.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                            }
+                        });
+                    });
+                </script>        
+            </div>
+                
+
+            <!-- Project 3 - Personal Portfolio Website -->
+            <div class="project-card">
+                <span class="project-tag personal-tag">Personal</span>
+                <h3><i class="fas fa-laptop-code"></i> Portfolio Website</h3>
+                <div class="project-tech">
+                    <span class="tech-item">HTML5</span>
+                    <span class="tech-item">CSS3</span>
+                    <span class="tech-item">JavaScript</span>
+                    <span class="tech-item">Bootstrap</span>
+                    <span class="tech-item">Responsive Design</span>
+                </div>
+                <div class="project-description">
+                    <p>A modern, responsive portfolio website featuring:</p>
+                    <ul class="project-features">
+                        <li>Dynamic education section with animated course cards</li>
+                        <li>Interactive project showcase with GitHub links</li>
+                        <li>Skills matrix with hover effects</li>
+                        <li>Mobile-first responsive layout</li>
+                        <li>Custom gradient-based theme</li>
+                    </ul>
+                </div>
+                <span class="read-more" onclick="this.closest('.project-card').classList.toggle('expanded')">
+                    Read More 
+                </span>
+                <a href="https://github.com/mehtabehmad/mehtabehmad.github.io.git" class="project-link" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-github"></i> View Code
+                </a>
+                <script>
+                    document.querySelectorAll('.read-more').forEach(btn => {
+                        btn.addEventListener('click', function() {
+                            const card = this.closest('.project-card');
+                            if(card.classList.contains('expanded')) {
+                                card.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                            }
+                        });
+                    });
+                </script>
+            </div>
+            
+        </div>
+    </div>
+
+    <div class="container" id="skills">
+        <h2 class="section-title">Professional Skillset</h2>
+        <div class="skills-grid">
+            <div class="skill-card">
+                <i class="fas fa-brain"></i>
+                <h4>Problem Solving</h4>
+                <p>Algorithmic thinking & analysis</p>
+            </div>
+            <div class="skill-card">
+                <i class="fas fa-database"></i>
+                <h4>Data Analysis</h4>
+                <p>Python, Pandas, Matplotlib, R</p>
+            </div>
+            <div class="skill-card">
+                <i class="fas fa-code"></i>
+                <h4>Web Dev</h4>
+                <p>Django, Bootstrap, HTML/CSS</p>
+            </div>  
+            <div class="skill-card">
+                <i class="fas fa-chart-bar"></i>
+                <h4>Business Analytics</h4>
+                <p>Excel, Power BI</p>
+            </div>
+            <div class="skill-card">
+                <i class="fas fa-users"></i> <!-- Icon representing business & interpersonal skills -->
+                <h4>Interpersonal Skills</h4>
+                <p>Presentation & Communication Skills</p>
+            </div> 
+            <div class="skill-card">
+                <i class="fas fa-code-branch"></i>
+                <h4>Version Control</h4>
+                <p>Git, GitHub</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>&copy; 2025 Mehtab Ahmad</p>
+        <div>
+            <a href="https://github.com/mehtabehmad" class="mx-2" rel="noopener noreferrer">
+                <i class="fab fa-github fa-2x"></i>
+            </a>
+            <a href="https://linkedin.com/in/mehtabehmad" class="mx-2" rel="noopener noreferrer">
+                <i class="fab fa-linkedin fa-2x"></i>
+            </a>
+            <a href="https://instagram.com/mehtabehmad" class="mx-2" rel="noopener noreferrer">
+                <i class="fab fa-instagram fa-2x"></i>
+            </a>
+        </div>
+    </div> 
+</body>
+</html> 
