@@ -18,22 +18,83 @@
             --accent: #1E90FF;
         }
 
+        /* Scroll Progress */
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: var(--primary-medium);
+            z-index: 9999;
+            transition: width 0.3s ease-out;
+        }
+
         body {
             font-family: 'Inter', sans-serif;
             background-color: #f8f9fa;
             color: #343a40;
+            scroll-behavior: smooth;
         }
+
+        /* Full Page Sections */
+        .section-container {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 80px 20px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease-out;
+        }
+
+        .section-container.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Hero Section */
         .hero-section {
+            height: 100vh;
             text-align: center;
-            padding: 120px 20px;
+            padding: 20px;
             background: linear-gradient(135deg, var(--primary-dark), var(--primary-medium));
             color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            animation: fadeInUp 0.8s ease-out;
         }
+
         .hero-title {
             font-size: 50px;
             font-weight: bold;
             margin-bottom: 20px;
         }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .scroll-down {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+            cursor: pointer;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0) translateX(-50%); }
+            40% { transform: translateY(-20px) translateX(-50%); }
+            60% { transform: translateY(-10px) translateX(-50%); }
+        }
+
+        /* Buttons */
         .btn-custom {
             padding: 12px 24px;
             border-radius: 30px;
@@ -42,30 +103,62 @@
             background-color: white;
             color: var(--primary-medium);
             border: 2px solid var(--primary-medium);
-            transition: 0.3s;
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            position: relative;
+            overflow: hidden;
         }
+
+        .btn-custom::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.4s ease, height 0.4s ease;
+        }
+
+        .btn-custom:hover::after {
+            width: 150px;
+            height: 150px;
+        }
+
         .btn-custom:hover {
             background-color: var(--primary-dark);
             color: white;
         }
+
+        /* Section Titles */
         .section-title {
             text-align: center;
             font-size: 32px;
-            margin-top: 50px;
+            margin-bottom: 40px;
             font-weight: bold;
             color: var(--primary-medium);
+            position: relative;
+            padding-bottom: 15px;
         }
-        /* Ensure Section Title Consistency */
-        #projects .section-title {
-            margin: 50px 0 30px !important;
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: var(--primary-medium);
+            animation: lineExpand 0.8s ease-out forwards;
         }
-        .footer {
-            text-align: center;
-            padding: 40px;
-            background-color: #f1f1f1;
-            margin-top: 50px;
+
+        @keyframes lineExpand {
+            from { width: 0; }
+            to { width: 60px; }
         }
-    
+
         /* About Section */
         .about-card {
             background: #f0f0f0;
@@ -73,11 +166,15 @@
             border-radius: 12px;
             text-align: center;
             box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-            margin-top: 50px;
             max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
+            margin: 0 auto;
+            transition: transform 0.3s ease;
         }
+
+        .about-card:hover {
+            transform: translateY(-5px);
+        }
+
         .about-photo {
             width: 150px;
             height: 150px;
@@ -86,16 +183,19 @@
             border: 4px solid var(--primary-medium);
             margin-bottom: 15px;
         }
+
         .about-text {
             font-size: 18px;
             color: #333;
             line-height: 1.6;
             margin-bottom: 20px;
         }
+
         .highlight {
             color: var(--primary-medium);
             font-weight: bold;
         }
+
         .about-buttons {
             margin-top: 20px;
             display: flex;
@@ -103,6 +203,7 @@
             gap: 15px;
             flex-wrap: wrap;
         }
+
         .btn-about {
             padding: 12px 20px;
             font-size: 16px;
@@ -114,12 +215,13 @@
             background: var(--primary-medium);
             color: white;
         }
+
         .btn-about:hover {
             background: var(--primary-dark);
             transform: translateY(-2px);
         }
 
-        /* Enhanced Education Section */
+        /* Education Section */
         .edu-card {
             background: linear-gradient(145deg, #ffffff, #f8f9fa);
             padding: 35px;
@@ -134,68 +236,63 @@
         }
 
         .edu-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
         }
 
         .edu-header {
-            display: flex;
-            justify-content: space-between;
+            display: grid;
+            grid-template-columns: auto 1fr auto;
+            gap: 30px;
             align-items: center;
-            margin-bottom: 25px;
-            padding-bottom: 20px;
-            border-bottom: 2px solid rgba(36, 59, 85, 0.1);
+            padding: 25px 0;
         }
 
-        .degree-container {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-        }
-
-        .degree-icon {
-            width: 50px;
-            height: 50px;
-            background: linear-gradient(45deg, var(--primary-medium), var(--primary-dark));
-            border-radius: 12px;
+        .lums-logo-container {
+            width: 120px;
+            height: 120px;
             display: flex;
             align-items: center;
             justify-content: center;
+            background: white;
+            border-radius: 15px;
+            padding: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+
+        .lums-logo {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .degree-info {
+            padding: 0 20px;
+            border-left: 3px solid var(--primary-medium);
+            border-right: 3px solid var(--primary-medium);
+        }
+
+        .edu-timeline {
+            background: linear-gradient(45deg, var(--primary-medium), var(--primary-dark));
             color: white;
-            font-size: 24px;
+            padding: 15px 25px;
+            border-radius: 30px;
+            text-align: center;
+            position: relative;
         }
 
-        .edu-header-content {
-            flex: 1;
-        }
-
-        .edu-header h4 {
-            font-size: 24px;
-            margin: 0;
+        .edu-timeline::before {
+            content: '🎓 Timeline';
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: white;
             color: var(--primary-dark);
-            font-weight: 700;
-        }
-
-        .edu-institution {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 18px;
-            color: var(--primary-medium);
-            margin: 15px 0;
-        }
-
-        .edu-institution i {
-            color: var(--primary-dark);
-        }
-
-        .edu-duration {
-            background: linear-gradient(45deg, #1E90FF, #00BFFF);
-            color: white;
-            padding: 8px 20px;
-            border-radius: 25px;
-            font-size: 14px;
-            font-weight: 600;
-            box-shadow: 0 4px 15px rgba(30, 144, 255, 0.3);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
         }
 
         .edu-subtitle {
@@ -206,10 +303,6 @@
             display: flex;
             align-items: center;
             gap: 10px;
-        }
-
-        .edu-subtitle i {
-            color: var(--primary-medium);
         }
 
         .edu-courses {
@@ -271,21 +364,11 @@
             text-align: center;
         }
 
-        /* Updated Education Icons */
-        .degree-icon {
-            background: linear-gradient(45deg, #243B55, #141E30); /* Darker gradient */
-        }
-
-        .edu-institution img {
-            height: 24px;
-            width: auto;
-            margin-right: 10px;
-        }
-
         /* Projects Section */
         .projects-section {
             padding: 60px 0;
         }
+
         .projects-grid {
             display: grid;
             gap: 30px;
@@ -293,17 +376,21 @@
             margin: 0 auto;
             padding: 0 20px;
         }
+
         .project-card {
             background: white;
             border-radius: 15px;
             padding: 25px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-            transition: transform 0.3s ease;
+            transition: all 0.3s ease;
             border-left: 4px solid var(--primary-medium);
         }
+
         .project-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
         }
+
         .project-tag {
             display: inline-block;
             padding: 6px 12px;
@@ -313,20 +400,24 @@
             text-transform: uppercase;
             margin-bottom: 15px;
         }
+
         .academic-tag {
             background: linear-gradient(45deg, var(--primary-medium), #2c5364);
             color: white;
         }
+
         .personal-tag {
             background: linear-gradient(45deg, #1E90FF, #00BFFF);
             color: white;
         }
+
         .project-tech {
             display: flex;
             flex-wrap: wrap;
             gap: 8px;
             margin: 15px 0;
         }
+
         .tech-item {
             background: #f4f6f9;
             padding: 6px 12px;
@@ -334,6 +425,7 @@
             font-size: 14px;
             color: var(--primary-dark);
         }
+
         .project-link {
             color: var(--primary-medium);
             text-decoration: none;
@@ -343,85 +435,18 @@
             gap: 8px;
             transition: 0.3s;
         }
+
         .project-link:hover {
             color: var(--primary-dark);
         }
 
-        /* Skills Section */
-        .skills-grid {
-            display: grid;
-            gap: 20px;
-            max-width: 1000px;
-            margin: 40px auto;
-            padding: 0 20px;
-        }
-        .skill-card {
-            background: white;
-            padding: 25px;
-            border-radius: 12px;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            position: relative;
-            overflow: hidden;
-            text-align: center;
-        }
-        .skill-card::before {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: linear-gradient(to right, var(--primary-medium), var(--primary-dark));
-            transform: scaleX(0);
-            transition: transform 0.3s ease;
-        }
-        .skill-card:hover {
-            transform: translateY(-10px);
-        }
-        .skill-card:hover::before {
-            transform: scaleX(1);
-        }
-        .skill-card i {
-            font-size: 36px;
-            margin-bottom: 15px;
-            color: var(--primary-medium);
-            transition: color 0.3s ease;
-        }
-        .skill-card h4 {
-            color: var(--primary-dark);
-            margin: 10px 0;
-            font-size: 20px;
-        }
-        .skill-card p {
-            color: #666;
-            font-size: 14px;
-            line-height: 1.4;
-        }
-
-        /* Update Footer Styles */
-        .footer a {
-            color: var(--primary-medium);
-            transition: color 0.3s ease;
-        }
-
-        .footer a:hover {
-            color: var(--primary-dark);
-        }
-
-        /* Fix Footer Underline */
-        .footer a {
-            text-decoration: none !important;
-        }
-
-        /* styles for the project section */
         .project-description {
             position: relative;
             max-height: 100px;
             overflow: hidden;
             transition: max-height 0.3s ease;
         }
-        
+
         .project-description::after {
             content: '';
             position: absolute;
@@ -462,6 +487,67 @@
             font-size: 14px;
         }
 
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            gap: 20px;
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .skill-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+        }
+
+        .skill-card i {
+            font-size: 36px;
+            margin-bottom: 15px;
+            color: var(--primary-medium);
+            transition: color 0.3s ease;
+        }
+
+        .skill-card h4 {
+            color: var(--primary-dark);
+            margin: 10px 0;
+            font-size: 20px;
+        }
+
+        .skill-card p {
+            color: #666;
+            font-size: 14px;
+            line-height: 1.4;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 40px;
+            background-color: #f1f1f1;
+        }
+
+        .footer a {
+            color: var(--primary-medium);
+            transition: color 0.3s ease;
+            text-decoration: none !important;
+        }
+
+        .footer a:hover {
+            color: var(--primary-dark);
+        }
+
         /* Responsive Design */
         @media (min-width: 992px) {
             .skills-grid,
@@ -469,108 +555,26 @@
                 grid-template-columns: repeat(3, 1fr);
             }
         }
+
         @media (max-width: 991px) and (min-width: 768px) {
             .skills-grid,
             .projects-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
-            .edu-header {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 10px;
-            }
-            .edu-duration {
-                align-self: flex-start;
-            }
         }
+
         @media (max-width: 767px) {
             .skills-grid,
             .projects-grid {
                 grid-template-columns: 1fr;
             }
+            
             .hero-title {
                 font-size: 40px;
             }
-            .edu-header {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 10px;
-            }
-            .edu-duration {
-                align-self: flex-start;
-            }
-            .edu-courses li {
-                flex-wrap: wrap;
-                gap: 8px;
-            }
-            .course-name {
-                flex: 0 0 100%;
-                margin: 0;
-            }
-            .course-code {
-                margin-left: auto;
-            }
-        }
-
-        /* Education Header Redesign */
-        .edu-header {
-            display: grid;
-            grid-template-columns: auto 1fr auto;
-            gap: 30px;
-            align-items: center;
-            padding: 25px 0;
-        }
-
-        .lums-logo-container {
-            width: 120px;
-            height: 120px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: white;
-            border-radius: 15px;
-            padding: 15px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-        }
-
-        .lums-logo {
-            max-width: 100%;
-            height: auto;
-        }
-
-        .degree-info {
-            padding: 0 20px;
-            border-left: 3px solid var(--primary-medium);
-            border-right: 3px solid var(--primary-medium);
-        }
-
-        .edu-timeline {
-            background: linear-gradient(45deg, var(--primary-medium), var(--primary-dark));
-            color: white;
-            padding: 15px 25px;
-            border-radius: 30px;
-            text-align: center;
-            position: relative;
-        }
-
-        .edu-timeline::before {
-            content: '🎓 Timeline';
-            position: absolute;
-            top: -12px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: white;
-            color: var(--primary-dark);
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: bold;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-        }
-
-        @media (max-width: 768px) {
-            .about-columns {
-                grid-template-columns: 1fr;
+            
+            .section-title {
+                font-size: 28px;
             }
             
             .edu-header {
@@ -594,279 +598,250 @@
     </style>
 </head>
 <body>
-    <div class="hero-section">
+    <div class="scroll-progress"></div>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
         <p class="hero-title">Hi, I'm Mehtab.</p>
         <p class="lead">Aspiring Data Analyst & Web Developer</p>
         <a class="btn btn-custom" href="#about-me">Know More</a>
-    </div>
+        <div class="scroll-down" onclick="smoothScroll('#about-me')">
+            <i class="fas fa-chevron-down fa-2x text-white"></i>
+        </div>
+    </section>
 
-    <div class="container" id="about-me">
-        <div class="about-card">
-            <img src="profile_image.jpg" alt="Mehtab Ahmad Professional Photo" class="about-photo">
-            <h2 class="section-title">About Me</h2>
-            <p class="about-text">
-                A <strong>Management Science student</strong> at <strong>LUMS</strong>, pursuing a minor in <strong>Computer Science</strong>. With a keen interest in <span class="highlight">problem-solving, data analysis, and web development</span>, I strive to create <span class="highlight">efficient digital solutions</span> that address real-world challenges.
-            </p>
-            <p class="about-text">
-                Looking for opportunities to apply my skills in meaningful and impactful projects.
-            </p>
-           
-            <div class="about-buttons">
-                <a href="https://drive.google.com/file/d/10ZuUUtB2A49Ghk9YHQiaur56YnPDoUmm/view?usp=share_link" 
-                   class="btn-about" 
-                   target="_blank" 
-                   rel="noopener noreferrer"
-                   title="View Updated Resume">
-                    <i class="fas fa-file-alt"></i> View Resume
-                </a>
-                <a href="mailto:itsmehtabahmad@gmail.com" 
-                   class="btn-about" 
-                   title="Send Email">
-                    <i class="fas fa-envelope"></i> Contact via Email
-                </a>
+    <!-- About Section -->
+    <div class="section-container" id="about-me">
+        <div class="container">
+            <div class="about-card">
+                <img src="profile_image.jpg" alt="Mehtab Ahmad" class="about-photo">
+                <h2 class="section-title">About Me</h2>
+                <p class="about-text">
+                    A <strong>Management Science student</strong> at <strong>LUMS</strong>, pursuing a minor in <strong>Computer Science</strong>. Passionate about creating <span class="highlight">data-driven solutions</span> and <span class="highlight">web applications</span> that solve real-world problems.
+                </p>
+                <p class="about-text">
+                    Always up for contributing to impactful projects—let’s connect!
+                </p>
+                <div class="about-buttons">
+                    <a href="https://drive.google.com/file/d/10ZuUUtB2A49Ghk9YHQiaur56YnPDoUmm/view" 
+                       class="btn-about" 
+                       target="_blank">
+                        <i class="fas fa-file-alt"></i> Resume
+                    </a>
+                    <a href="mailto:itsmehtabahmad@gmail.com" 
+                       class="btn-about">
+                        <i class="fas fa-envelope"></i> Email
+                    </a>
+                </div>
             </div>
         </div>
-    </div>    
+    </div>
 
-    <div class="container" id="education">
-        <h2 class="section-title">Education</h2>
-        <div class="edu-card">
-            <div class="edu-header">
-                <div class="lums-logo-container">
-                    <img src="lums logo.png" alt="LUMS Logo" class="lums-logo">
-                </div>
-                
-                <div class="degree-info">
-                    <h4>BSc (Hons.) Management Science</h4>
-                    <div class="edu-institution">
-                        Lahore University of Management Sciences
+    <!-- Education Section -->
+    <div class="section-container" id="education">
+        <div class="container">
+            <h2 class="section-title">Education</h2>
+            <div class="edu-card">
+                <div class="edu-header">
+                    <div class="lums-logo-container">
+                        <img src="lums-logo.png" alt="LUMS Logo" class="lums-logo">
+                    </div>
+                    <div class="degree-info">
+                        <h4>BSc (Hons.) Management Science</h4>
+                        <div class="edu-institution">
+                            Lahore University of Management Sciences
+                        </div>
+                    </div>
+                    <div class="edu-timeline">
+                        September 2021 - May 2026<br>
+                        <small>(Expected Graduation)</small>
                     </div>
                 </div>
 
-                <div class="edu-timeline">
-                    September 2021 - May 2026<br>
-                    <small>(Expected Graduation)</small>
+                <h5 class="edu-subtitle">
+                    <i class="fas fa-book-open"></i>
+                    Key Courses
+                </h5>
+                
+                <ul class="edu-courses">
+                    <li>
+                        <i class="fas fa-laptop-code"></i>
+                        <span class="course-name">Computational Problem Solving</span>
+                        <span class="course-code" style="background: linear-gradient(45deg, #FF512F, #F09819);">CS100</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-code"></i>
+                        <span class="course-name">Introduction to Programming</span>
+                        <span class="course-code" style="background: linear-gradient(45deg, #1E90FF, #00BFFF);">CS200</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-chart-line"></i>
+                        <span class="course-name">Marketing Models</span>
+                        <span class="course-code" style="background: linear-gradient(45deg, #FF416C, #FF4B2B);">MKTG 343</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-comments"></i>
+                        <span class="course-name">Business Communication</span>
+                        <span class="course-code" style="background: linear-gradient(45deg, #00b09b, #96c93d);">MGMT 212</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-chart-bar"></i>
+                        <span class="course-name">Probability and Statistics</span>
+                        <span class="course-code" style="background: linear-gradient(45deg, #da22ff, #9733ee);">DISC 203</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="course-name">Principles of Marketing</span>
+                        <span class="course-code" style="background: linear-gradient(45deg, #f46b45, #eea849);">MKTG 201</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-database"></i>
+                        <span class="course-name">Data Analytics for New Product Development</span>
+                        <span class="course-code" style="background: linear-gradient(45deg, #1D976C, #93F9B9);">MKTG 345</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-brain"></i>
+                        <span class="course-name">Principles and Techniques of Data Science</span>
+                        <span class="course-code" style="background: linear-gradient(45deg, #8E2DE2, #4A00E0);">CS 334</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Projects Section -->
+    <div class="section-container" id="projects">
+        <div class="container">
+            <h2 class="section-title">Projects</h2>
+            <div class="projects-grid">
+                <!-- Hashbook Project -->
+                <div class="project-card">
+                    <span class="project-tag personal-tag">Personal</span>
+                    <h3><i class="fas fa-hashtag"></i> Hashbook</h3>
+                    <div class="project-tech">
+                        <span class="tech-item">Python</span>
+                        <span class="tech-item">Django</span>
+                        <span class="tech-item">Bootstrap</span>
+                        <span class="tech-item">PostgreSQL</span>
+                    </div>
+                    <div class="project-description">
+                        <p>A dynamic idea-sharing platform featuring:</p>
+                        <ul class="project-features">
+                            <li>User authentication and profile management</li>
+                            <li>Full CRUD functionality for posts</li>
+                            <li>Interactive social features (likes, comments, hashtags)</li>
+                            <li>Responsive and mobile-friendly UI with Bootstrap</li>
+                            <li>Optimized database management using PostgreSQL</li>
+                        </ul>
+                    </div>
+                    <span class="read-more" onclick="this.closest('.project-card').classList.toggle('expanded')">
+                        Read More
+                    </span>
+                    <a href="https://github.com/mehtabehmad/Hashbook.git" class="project-link" target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-github"></i> View Code
+                    </a>
+                </div>
+
+                <!-- FemRides Project -->
+                <div class="project-card">
+                    <span class="project-tag academic-tag">Academic</span>
+                    <h3><i class="fas fa-car-side"></i> FemRides Analytics</h3>
+                    <div class="project-tech">
+                        <span class="tech-item">R Programming</span>
+                        <span class="tech-item">Sawtooth</span>
+                        <span class="tech-item">mlogit</span>
+                        <span class="tech-item">Market Research</span>
+                        <span class="tech-item">Data Analysis</span>
+                    </div>
+                    <div class="project-description">
+                        <p>Women-focused ride-hailing service analysis featuring:</p>
+                        <ul class="project-features">
+                            <li>Choice-based conjoint analysis (300 respondents)</li>
+                            <li>Market share simulation model (16.1% projected)</li>
+                            <li>Competitive benchmarking vs Yango/InDriver/Careem</li>
+                            <li>Dynamic pricing strategy development</li>
+                        </ul>
+                    </div>
+                    <span class="read-more" onclick="this.closest('.project-card').classList.toggle('expanded')">
+                        Read More
+                    </span>
+                    <a href="https://drive.google.com/file/d/1MaBajfcxYlxzemm_G0NfkrxlOkKXXc4U/view?usp=share_link" class="project-link" target="_blank" rel="noopener noreferrer">
+                        <i class="fas fa-file-alt"></i> View Project
+                    </a>
+                </div>
+
+                <!-- Portfolio Website Project -->
+                <div class="project-card">
+                    <span class="project-tag personal-tag">Personal</span>
+                    <h3><i class="fas fa-laptop-code"></i> Portfolio Website</h3>
+                    <div class="project-tech">
+                        <span class="tech-item">HTML5</span>
+                        <span class="tech-item">CSS3</span>
+                        <span class="tech-item">JavaScript</span>
+                        <span class="tech-item">Bootstrap</span>
+                        <span class="tech-item">Responsive Design</span>
+                    </div>
+                    <div class="project-description">
+                        <p>A modern, responsive portfolio website featuring:</p>
+                        <ul class="project-features">
+                            <li>Dynamic education section with animated course cards</li>
+                            <li>Interactive project showcase with GitHub links</li>
+                            <li>Skills matrix with hover effects</li>
+                            <li>Mobile-first responsive layout</li>
+                            <li>Custom gradient-based theme</li>
+                        </ul>
+                    </div>
+                    <span class="read-more" onclick="this.closest('.project-card').classList.toggle('expanded')">
+                        Read More
+                    </span>
+                    <a href="https://github.com/mehtabehmad/mehtabehmad.github.io.git" class="project-link" target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-github"></i> View Code
+                    </a>
                 </div>
             </div>
+        </div>
+    </div>
 
-            <h5 class="edu-subtitle">
-                <i class="fas fa-book-open"></i>
-                Key Courses
-            </h5>
-            
-            <ul class="edu-courses">
-                <li>
-                    <i class="fas fa-laptop-code"></i>
-                    <span class="course-name">Computational Problem Solving</span>
-                    <span class="course-code" style="background: linear-gradient(45deg, #FF512F, #F09819);">CS100</span>
-                </li>
-                <li>
-                    <i class="fas fa-code"></i>
-                    <span class="course-name">Introduction to Programming</span>
-                    <span class="course-code" style="background: linear-gradient(45deg, #1E90FF, #00BFFF);">CS200</span>
-                </li>
-                <li>
-                    <i class="fas fa-chart-line"></i>
-                    <span class="course-name">Marketing Models</span>
-                    <span class="course-code" style="background: linear-gradient(45deg, #FF416C, #FF4B2B);">MKTG 343</span>
-                </li>
-                <li>
-                    <i class="fas fa-comments"></i>
-                    <span class="course-name">Business Communication</span>
-                    <span class="course-code" style="background: linear-gradient(45deg, #00b09b, #96c93d);">MGMT 212</span>
-                </li>
-                <li>
-                    <i class="fas fa-chart-bar"></i>
-                    <span class="course-name">Probability and Statistics</span>
-                    <span class="course-code" style="background: linear-gradient(45deg, #da22ff, #9733ee);">DISC 203</span>
-                </li>
-                <li>
-                    <i class="fas fa-shopping-cart"></i>
-                    <span class="course-name">Principles of Marketing</span>
-                    <span class="course-code" style="background: linear-gradient(45deg, #f46b45, #eea849);">MKTG 201</span>
-                </li>
-                <li>
-                    <i class="fas fa-database"></i>
-                    <span class="course-name">Data Analytics for New Product Development</span>
-                    <span class="course-code" style="background: linear-gradient(45deg, #1D976C, #93F9B9);">MKTG 345</span>
-                </li>
-                <li>
+    <!-- Skills Section -->
+    <div class="section-container" id="skills">
+        <div class="container">
+            <h2 class="section-title">Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
                     <i class="fas fa-brain"></i>
-                    <span class="course-name">Principles and Techniques of Data Science</span>
-                    <span class="course-code" style="background: linear-gradient(45deg, #8E2DE2, #4A00E0);">CS 334</span>
-                </li>
-            </ul>
-        </div>
-    </div>
-
-    <div class="container projects-section" id="projects">
-        <h2 class="section-title">Featured Projects</h2>
-        <div class="projects-grid">
-            <!-- Project 1 - Hashbook -->
-            <!-- Project 1 - Hashbook -->
-            <div class="project-card">
-                <span class="project-tag personal-tag">Personal</span>
-                <h3><i class="fas fa-hashtag"></i> Hashbook</h3>
-                <div class="project-tech">
-                    <span class="tech-item">Python</span>
-                    <span class="tech-item">Django</span>
-                    <span class="tech-item">Bootstrap</span>
-                    <span class="tech-item">PostgreSQL</span>
+                    <h4>Problem Solving</h4>
+                    <p>Algorithmic thinking & analysis</p>
                 </div>
-
-                <div class="project-description">
-                    <p>A dynamic idea-sharing platform featuring:</p>
-                    <ul class="project-features">
-                        <li>User authentication and profile management</li>
-                        <li>Full CRUD functionality for posts</li>
-                        <li>Interactive social features (likes, comments, hashtags)</li>
-                        <li>Responsive and mobile-friendly UI with Bootstrap</li>
-                        <li>Optimized database management using PostgreSQL</li>
-                    </ul>
+                <div class="skill-card">
+                    <i class="fas fa-database"></i>
+                    <h4>Data Analysis</h4>
+                    <p>Python, Pandas, Matplotlib, R</p>
                 </div>
-
-                <span class="read-more" onclick="this.closest('.project-card').classList.toggle('expanded')">
-                    Read More
-                </span>
-
-                <a href="https://github.com/mehtabehmad/Hashbook.git" class="project-link" target="_blank" rel="noopener noreferrer">
-                    <i class="fab fa-github"></i> View Code
-                </a>
-
-                <script>
-                    document.querySelectorAll('.read-more').forEach(btn => {
-                        btn.addEventListener('click', function() {
-                            const card = this.closest('.project-card');
-                            if(card.classList.contains('expanded')) {
-                                card.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                            }
-                        });
-                    });
-                </script>        
-            </div>
-
-
-            <!-- Project 2 - FemRides -->
-            <div class="project-card">
-                <span class="project-tag academic-tag">Academic</span>
-                <h3><i class="fas fa-car-side"></i> FemRides Analytics</h3>
-                <div class="project-tech">
-                    <span class="tech-item">R Programming</span>
-                    <span class="tech-item">Sawtooth</span>
-                    <span class="tech-item">mlogit</span>
-                    <span class="tech-item">Market Research</span>
-                    <span class="tech-item">Data Analysis</span>
+                <div class="skill-card">
+                    <i class="fas fa-code"></i>
+                    <h4>Web Development</h4>
+                    <p>Django, Bootstrap, HTML/CSS</p>
                 </div>
-                
-                <div class="project-description">
-                    <p>Women-focused ride-hailing service analysis featuring:</p>
-                    <ul class="project-features">
-                        <li>Choice-based conjoint analysis (300 respondents)</li>
-                        <li>Market share simulation model (16.1% projected)</li>
-                        <li>Competitive benchmarking vs Yango/InDriver/Careem</li>
-                        <li>Dynamic pricing strategy development</li>
-                    </ul>
+                <div class="skill-card">
+                    <i class="fas fa-chart-bar"></i>
+                    <h4>Business Analytics</h4>
+                    <p>Excel, Power BI</p>
                 </div>
-                
-                <span class="read-more" onclick="this.closest('.project-card').classList.toggle('expanded')">
-                    Read More
-                </span>
-            
-                <a href="https://drive.google.com/file/d/1MaBajfcxYlxzemm_G0NfkrxlOkKXXc4U/view?usp=share_link" class="project-link" target="_blank" rel="noopener noreferrer">
-                    <i class="fas fa-file-alt"></i> View Project
-                </a>
-                <script>
-                    // Add smooth scroll for expanded cards
-                    document.querySelectorAll('.read-more').forEach(btn => {
-                        btn.addEventListener('click', function() {
-                            const card = this.closest('.project-card');
-                            if(card.classList.contains('expanded')) {
-                                card.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                            }
-                        });
-                    });
-                </script>        
-            </div>
-                
-
-            <!-- Project 3 - Personal Portfolio Website -->
-            <div class="project-card">
-                <span class="project-tag personal-tag">Personal</span>
-                <h3><i class="fas fa-laptop-code"></i> Portfolio Website</h3>
-                <div class="project-tech">
-                    <span class="tech-item">HTML5</span>
-                    <span class="tech-item">CSS3</span>
-                    <span class="tech-item">JavaScript</span>
-                    <span class="tech-item">Bootstrap</span>
-                    <span class="tech-item">Responsive Design</span>
+                <div class="skill-card">
+                    <i class="fas fa-users"></i>
+                    <h4>Interpersonal Skills</h4>
+                    <p>Presentation & Communication</p>
                 </div>
-                <div class="project-description">
-                    <p>A modern, responsive portfolio website featuring:</p>
-                    <ul class="project-features">
-                        <li>Dynamic education section with animated course cards</li>
-                        <li>Interactive project showcase with GitHub links</li>
-                        <li>Skills matrix with hover effects</li>
-                        <li>Mobile-first responsive layout</li>
-                        <li>Custom gradient-based theme</li>
-                    </ul>
+                <div class="skill-card">
+                    <i class="fas fa-code-branch"></i>
+                    <h4>Version Control</h4>
+                    <p>Git, GitHub</p>
                 </div>
-                <span class="read-more" onclick="this.closest('.project-card').classList.toggle('expanded')">
-                    Read More 
-                </span>
-                <a href="https://github.com/mehtabehmad/mehtabehmad.github.io.git" class="project-link" target="_blank" rel="noopener noreferrer">
-                    <i class="fab fa-github"></i> View Code
-                </a>
-                <script>
-                    document.querySelectorAll('.read-more').forEach(btn => {
-                        btn.addEventListener('click', function() {
-                            const card = this.closest('.project-card');
-                            if(card.classList.contains('expanded')) {
-                                card.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                            }
-                        });
-                    });
-                </script>
-            </div>
-            
-        </div>
-    </div>
-
-    <div class="container" id="skills">
-        <h2 class="section-title">Professional Skillset</h2>
-        <div class="skills-grid">
-            <div class="skill-card">
-                <i class="fas fa-brain"></i>
-                <h4>Problem Solving</h4>
-                <p>Algorithmic thinking & analysis</p>
-            </div>
-            <div class="skill-card">
-                <i class="fas fa-database"></i>
-                <h4>Data Analysis</h4>
-                <p>Python, Pandas, Matplotlib, R</p>
-            </div>
-            <div class="skill-card">
-                <i class="fas fa-code"></i>
-                <h4>Web Dev</h4>
-                <p>Django, Bootstrap, HTML/CSS</p>
-            </div>  
-            <div class="skill-card">
-                <i class="fas fa-chart-bar"></i>
-                <h4>Business Analytics</h4>
-                <p>Excel, Power BI</p>
-            </div>
-            <div class="skill-card">
-                <i class="fas fa-users"></i> <!-- Icon representing business & interpersonal skills -->
-                <h4>Interpersonal Skills</h4>
-                <p>Presentation & Communication Skills</p>
-            </div> 
-            <div class="skill-card">
-                <i class="fas fa-code-branch"></i>
-                <h4>Version Control</h4>
-                <p>Git, GitHub</p>
             </div>
         </div>
     </div>
 
+    <!-- Footer -->
     <div class="footer">
         <p>&copy; 2025 Mehtab Ahmad</p>
         <div>
@@ -880,6 +855,56 @@
                 <i class="fab fa-instagram fa-2x"></i>
             </a>
         </div>
-    </div> 
+    </div>
+
+    <script>
+        // Scroll Progress
+        window.addEventListener('scroll', () => {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            document.querySelector('.scroll-progress').style.width = scrolled + '%';
+        });
+
+        // Intersection Observer
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if(entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.section-container').forEach((section) => {
+            observer.observe(section);
+        });
+
+        // Smooth Scroll
+        function smoothScroll(target) {
+            const element = document.querySelector(target);
+            window.scrollTo({
+                top: element.offsetTop,
+                behavior: 'smooth'
+            });
+        }
+
+        // Anchor Link Handling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                smoothScroll(this.getAttribute('href'));
+            });
+        });
+
+        // Project Card Expansion
+        document.querySelectorAll('.read-more').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const card = this.closest('.project-card');
+                if(card.classList.contains('expanded')) {
+                    card.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
 </body>
-</html> 
+</html>
