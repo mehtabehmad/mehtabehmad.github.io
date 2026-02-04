@@ -11,718 +11,61 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
-    <style>
-        :root {
-            --primary-dark: #141E30;
-            --primary-medium: #243B55;
-            --accent: #1E90FF;
-        }
-
-        /* Scroll Progress */
-        .scroll-progress {
-            position: fixed;
-            top: 0;
-            left: 0;
-            height: 3px;
-            background: var(--primary-medium);
-            z-index: 9999;
-            transition: width 0.3s ease-out;
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #f8f9fa;
-            color: #343a40;
-            scroll-behavior: smooth;
-        }
-
-        /* Full Page Sections */
-        .section-container {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 80px 20px;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.6s ease-out;
-        }
-
-        .section-container.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Hero Section */
-        .hero-section {
-            height: 100vh;
-            text-align: center;
-            padding: 20px;
-            background: linear-gradient(135deg, var(--primary-dark), var(--primary-medium));
-            color: white;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            animation: fadeInUp 0.8s ease-out;
-        }
-
-        .hero-title {
-            font-size: 50px;
-            font-weight: bold;
-            margin-bottom: 20px;
-        }
-
-        /* Animations */
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .scroll-down {
-            position: absolute;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-            animation: bounce 2s infinite;
-            cursor: pointer;
-        }
-
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% { transform: translateY(0) translateX(-50%); }
-            40% { transform: translateY(-20px) translateX(-50%); }
-            60% { transform: translateY(-10px) translateX(-50%); }
-        }
-
-        /* Buttons */
-        .btn-custom {
-            padding: 12px 24px;
-            border-radius: 30px;
-            font-size: 18px;
-            font-weight: bold;
-            background-color: white;
-            color: var(--primary-medium);
-            border: 2px solid var(--primary-medium);
-            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .btn-custom::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 0;
-            height: 0;
-            background: rgba(255,255,255,0.1);
-            border-radius: 50%;
-            transform: translate(-50%, -50%);
-            transition: width 0.4s ease, height 0.4s ease;
-        }
-
-        .btn-custom:hover::after {
-            width: 150px;
-            height: 150px;
-        }
-
-        .btn-custom:hover {
-            background-color: var(--primary-dark);
-            color: white;
-        }
-
-        /* Section Titles */
-        .section-title {
-            text-align: center;
-            font-size: 32px;
-            margin-bottom: 40px;
-            font-weight: bold;
-            color: var(--primary-medium);
-            position: relative;
-            padding-bottom: 15px;
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 60px;
-            height: 3px;
-            background: var(--primary-medium);
-            animation: lineExpand 0.8s ease-out forwards;
-        }
-
-        @keyframes lineExpand {
-            from { width: 0; }
-            to { width: 60px; }
-        }
-
-        /* About Section */
-        .about-card {
-            background: #f0f0f0;
-            padding: 30px;
-            border-radius: 12px;
-            text-align: center;
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-            max-width: 800px;
-            margin: 0 auto;
-            transition: transform 0.3s ease;
-        }
-
-        .about-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .about-photo {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 4px solid var(--primary-medium);
-            margin-bottom: 15px;
-        }
-
-        .about-text {
-            font-size: 18px;
-            color: #333;
-            line-height: 1.6;
-            margin-bottom: 20px;
-        }
-
-        .highlight {
-            color: var(--primary-medium);
-            font-weight: bold;
-        }
-
-        .about-buttons {
-            margin-top: 20px;
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
-
-        .btn-about {
-            padding: 12px 20px;
-            font-size: 16px;
-            font-weight: bold;
-            text-decoration: none;
-            border-radius: 8px;
-            transition: 0.3s;
-            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-            background: var(--primary-medium);
-            color: white;
-        }
-
-        .btn-about:hover {
-            background: var(--primary-dark);
-            transform: translateY(-2px);
-        }
-
-        /* Education Section */
-        .edu-card {
-            background: linear-gradient(145deg, #ffffff, #f8f9fa);
-            padding: 35px;
-            border-radius: 20px;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.12);
-            margin: 30px auto;
-            max-width: 1000px;
-            position: relative;
-            overflow: hidden;
-            border-left: 6px solid var(--primary-medium);
-            transition: transform 0.3s ease;
-        }
-
-        .edu-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
-        }
-
-        .edu-header {
-            display: grid;
-            grid-template-columns: auto 1fr auto;
-            gap: 30px;
-            align-items: center;
-            padding: 25px 0;
-        }
-
-        .lums-logo-container {
-            width: 120px;
-            height: 120px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: white;
-            border-radius: 15px;
-            padding: 15px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-        }
-
-        .lums-logo {
-            max-width: 100%;
-            height: auto;
-        }
-
-        .degree-info {
-            padding: 0 20px;
-            border-left: 3px solid var(--primary-medium);
-            border-right: 3px solid var(--primary-medium);
-        }
-
-        .edu-timeline {
-            background: linear-gradient(45deg, var(--primary-medium), var(--primary-dark));
-            color: white;
-            padding: 15px 25px;
-            border-radius: 30px;
-            text-align: center;
-            position: relative;
-        }
-
-        .edu-timeline::before {
-            content: '🎓 Timeline';
-            position: absolute;
-            top: -12px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: white;
-            color: var(--primary-dark);
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: bold;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-        }
-
-        .edu-subtitle {
-            font-size: 20px;
-            font-weight: 600;
-            color: var(--primary-dark);
-            margin: 25px 0 15px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .edu-courses {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 15px;
-        }
-
-        .edu-courses li {
-            background: rgba(36, 59, 85, 0.05);
-            padding: 15px 20px;
-            border-radius: 8px;
-            font-size: 15px;
-            font-weight: 500;
-            color: var(--primary-dark);
-            transition: all 0.3s ease;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 10px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .edu-courses li:before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0;
-            height: 100%;
-            width: 3px;
-            background: var(--primary-medium);
-            transition: width 0.3s ease;
-        }
-
-        .edu-courses li:hover {
-            background: rgba(36, 59, 85, 0.1);
-            transform: translateX(8px);
-        }
-
-        .edu-courses li:hover:before {
-            width: 6px;
-        }
-
-        .course-name {
-            flex: 1;
-            margin: 0 15px;
-        }
-
-        .course-code {
-            padding: 4px 12px;
-            border-radius: 15px;
-            font-size: 12px;
-            font-weight: 600;
-            color: white;
-            text-shadow: 0 1px 2px rgba(0,0,0,0.15);
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-            min-width: 65px;
-            text-align: center;
-        }
-
-        /* Projects Section */
-        .projects-section {
-            padding: 60px 0;
-        }
-
-        .projects-grid {
-            display: grid;
-            gap: 30px;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        .project-card {
-            background: white;
-            border-radius: 15px;
-            padding: 25px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-            transition: all 0.3s ease;
-            border-left: 4px solid var(--primary-medium);
-        }
-
-        .project-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
-        }
-
-        .project-tag {
-            display: inline-block;
-            padding: 6px 12px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: bold;
-            text-transform: uppercase;
-            margin-bottom: 15px;
-        }
-
-        .academic-tag {
-            background: linear-gradient(45deg, var(--primary-medium), #2c5364);
-            color: white;
-        }
-
-        .personal-tag {
-            background: linear-gradient(45deg, #1E90FF, #00BFFF);
-            color: white;
-        }
-
-        .project-tech {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin: 15px 0;
-        }
-
-        .tech-item {
-            background: #f4f6f9;
-            padding: 6px 12px;
-            border-radius: 20px;
-            font-size: 14px;
-            color: var(--primary-dark);
-        }
-
-        .project-link {
-            color: var(--primary-medium);
-            text-decoration: none;
-            font-weight: bold;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            transition: 0.3s;
-        }
-
-        .project-link:hover {
-            color: var(--primary-dark);
-        }
-
-        .project-description {
-            position: relative;
-            max-height: 100px;
-            overflow: hidden;
-            transition: max-height 0.3s ease;
-        }
-
-        .project-description::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 30px;
-            background: linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255,1));
-        }
-
-        .project-card.expanded .project-description {
-            max-height: 500px;
-        }
-
-        .project-card.expanded .project-description::after {
-            display: none;
-        }
-
-        .read-more {
-            color: var(--primary-medium);
-            cursor: pointer;
-            font-weight: 600;
-            display: inline-block;
-            margin-top: 10px;
-        }
-
-        .read-more:hover {
-            color: var(--primary-dark);
-        }
-
-        .project-features {
-            padding-left: 20px;
-            margin: 10px 0;
-        }
-
-        .project-features li {
-            margin-bottom: 6px;
-            font-size: 14px;
-        }
-
-        /* Skills Section */
-        .skills-grid {
-            display: grid;
-            gap: 20px;
-            max-width: 1000px;
-            margin: 40px auto;
-            padding: 0 20px;
-        }
-
-        .skill-card {
-            background: white;
-            padding: 25px;
-            border-radius: 12px;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            position: relative;
-            overflow: hidden;
-            text-align: center;
-        }
-
-        .skill-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 35px rgba(0,0,0,0.12);
-        }
-
-        .skill-card i {
-            font-size: 36px;
-            margin-bottom: 15px;
-            color: var(--primary-medium);
-            transition: color 0.3s ease;
-        }
-
-        .skill-card h4 {
-            color: var(--primary-dark);
-            margin: 10px 0;
-            font-size: 20px;
-        }
-
-        .skill-card p {
-            color: #666;
-            font-size: 14px;
-            line-height: 1.4;
-        }
-
-        /* Footer */
-        .footer {
-            text-align: center;
-            padding: 40px;
-            background-color: #f1f1f1;
-        }
-
-        .footer a {
-            color: var(--primary-medium);
-            transition: color 0.3s ease;
-            text-decoration: none !important;
-        }
-
-        .footer a:hover {
-            color: var(--primary-dark);
-        }
-
-        /* Responsive Design */
-        @media (min-width: 992px) {
-            .skills-grid,
-            .projects-grid {
-                grid-template-columns: repeat(3, 1fr);
-            }
-        }
-
-        @media (max-width: 991px) and (min-width: 768px) {
-            .skills-grid,
-            .projects-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media (max-width: 767px) {
-            .skills-grid,
-            .projects-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .hero-title {
-                font-size: 40px;
-            }
-            
-            .section-title {
-                font-size: 28px;
-            }
-            
-            .edu-header {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-            
-            .lums-logo-container {
-                margin: 0 auto;
-            }
-            
-            .degree-info {
-                border: none;
-                padding: 20px 0;
-            }
-            
-            .edu-timeline {
-                margin-top: 20px;
-            }
-        }
-    
-        /* Mobile Optimization Additions */
-        @media (max-width: 767px) {
-            /* Education Section Adjustments */
-            .edu-card {
-                padding: 20px;
-                margin: 15px auto;
-            }
-
-            .edu-header {
-                gap: 15px;
-                padding: 15px 0;
-            }
-
-            .lums-logo-container {
-                width: 90px;
-                height: 90px;
-                padding: 10px;
-            }
-
-            .edu-timeline {
-                padding: 10px 15px;
-                font-size: 14px;
-            }
-
-            .edu-timeline::before {
-                font-size: 10px;
-                padding: 2px 8px;
-            }
-
-            .edu-courses {
-                grid-template-columns: 1fr;
-            }
-
-            .edu-courses li {
-                padding: 12px 15px;
-                font-size: 14px;
-                flex-direction: column;
-                align-items: flex-start;
-            }
-
-            .course-code {
-                margin-top: 8px;
-                font-size: 11px;
-                padding: 3px 8px;
-            }
-
-            /* Project Cards Adjustments */
-            .project-card {
-                padding: 20px;
-            }
-
-            .project-features li {
-                font-size: 13px;
-            }
-
-            .project-tech {
-                gap: 6px;
-            }
-
-            .tech-item {
-                padding: 4px 10px;
-                font-size: 13px;
-            }
-
-            /* General Section Padding */
-            .section-container {
-                padding: 60px 15px;
-            }
-
-            /* About Section */
-            .about-photo {
-                width: 120px;
-                height: 120px;
-            }
-
-            .about-text {
-                font-size: 16px;
-            }
-
-            /* Skills Section */
-            .skill-card {
-                padding: 20px;
-            }
-
-            .skill-card h4 {
-                font-size: 18px;
-            }
-        }
-
-        /* Additional Mobile Fixes */
-        @media (max-width: 575px) {
-            .edu-courses li {
-                font-size: 13px;
-            }
-
-            .project-card h3 {
-                font-size: 1.25rem;
-            }
-
-            .btn-about {
-                width: 100%;
-                text-align: center;
-            }
-
-            .about-buttons {
-                gap: 10px;
-                width: 100%;
-            }
-        }
-
-        /* Prevent Horizontal Overflow */
-        .edu-courses,
-        .project-features {
-            overflow-wrap: break-word;
-            word-wrap: break-word;
-        }
-
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="scroll-progress"></div>
 
+    <header class="site-header">
+        <nav class="site-nav">
+            <a class="brand" href="#top">Mehtab Ahmad</a>
+            <div class="nav-links">
+                <a href="#about-me">About</a>
+                <a href="#education">Education</a>
+                <a href="#projects">Projects</a>
+                <a href="#skills">Skills</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </nav>
+    </header>
+
     <!-- Hero Section -->
-    <section class="hero-section">
-        <p class="hero-title">Hi, I'm Mehtab.</p>
-        <p class="lead">Aspiring Data Analyst & Web Developer</p>
-        <a class="btn btn-custom" href="#about-me">Know More</a>
+    <section class="hero-section" id="top">
+        <div class="hero-content">
+            <div class="hero-intro">
+                <p class="pill">Business x Technology</p>
+                <h1 class="hero-title">I bridge strategy with analytics.</h1>
+                <p class="hero-subtitle">
+                    Final-year Management Science student at LUMS with a Computer Science minor,
+                    focused on data analytics, growth strategy, and product-centric problem solving.
+                </p>
+                <div class="cta-group">
+                    <a class="btn btn-custom" href="#projects">View Projects</a>
+                    <a class="btn btn-outline" href="#contact">Let's Connect</a>
+                </div>
+                <div class="hero-highlights">
+                    <div>
+                        <span class="metric">Data Analytics</span>
+                        <span class="metric-detail">Python • SQL • Power BI</span>
+                    </div>
+                    <div>
+                        <span class="metric">Business Strategy</span>
+                        <span class="metric-detail">Market insights • Growth</span>
+                    </div>
+                    <div>
+                        <span class="metric">Product Thinking</span>
+                        <span class="metric-detail">Customer-first design</span>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-portrait">
+                <img src="profile_image.jpg" alt="Mehtab Ahmad portrait">
+                <div class="hero-badge">
+                    <span>Open to roles</span>
+                    <strong>Analytics • Growth • Marketing</strong>
+                </div>
+            </div>
+        </div>
         <div class="scroll-down" onclick="smoothScroll('#about-me')">
             <i class="fas fa-chevron-down fa-2x text-white"></i>
         </div>
@@ -733,13 +76,31 @@
         <div class="container">
             <div class="about-card">
                 <img src="profile_image.jpg" alt="Mehtab Ahmad" class="about-photo">
-                <h2 class="section-title">About Me</h2>
+                <p class="section-kicker">About</p>
+                <h2 class="section-title">Business-minded analyst with a builder’s mindset.</h2>
                 <p class="about-text">
-                    A <strong>Management Science student</strong> at <strong>LUMS</strong>, pursuing a minor in <strong>Computer Science</strong>. Passionate about creating <span class="highlight">data-driven solutions</span> and <span class="highlight">web applications</span> that solve real-world problems.
+                    I study <strong>Management Science</strong> at <strong>LUMS</strong> with a minor in
+                    <strong>Computer Science</strong>. I translate ambiguous business goals into
+                    data-driven insights and digital experiences that create measurable impact.
                 </p>
                 <p class="about-text">
-                    Always up for contributing to impactful projects—let’s connect!
+                    I'm actively exploring roles in <span class="highlight">Data Analytics</span>,
+                    <span class="highlight">Business Development</span>, and <span class="highlight">Marketing</span>.
                 </p>
+                <div class="about-stats">
+                    <div>
+                        <p class="stat-value">3+</p>
+                        <p class="stat-label">Analytics projects</p>
+                    </div>
+                    <div>
+                        <p class="stat-value">2</p>
+                        <p class="stat-label">Research studies</p>
+                    </div>
+                    <div>
+                        <p class="stat-value">5</p>
+                        <p class="stat-label">Core toolsets</p>
+                    </div>
+                </div>
                 <div class="about-buttons">
                     <a href="https://drive.google.com/file/d/10ZuUUtB2A49Ghk9YHQiaur56YnPDoUmm/view" 
                        class="btn-about" 
@@ -758,7 +119,8 @@
     <!-- Education Section -->
     <div class="section-container" id="education">
         <div class="container">
-            <h2 class="section-title">Education</h2>
+            <p class="section-kicker">Education</p>
+            <h2 class="section-title">A hybrid foundation in strategy and computing.</h2>
             <div class="edu-card">
                 <div class="edu-header">
                     <div class="lums-logo-container">
@@ -769,6 +131,7 @@
                         <div class="edu-institution">
                             Lahore University of Management Sciences
                         </div>
+                        <p class="edu-focus">Minor: Computer Science (Data Analytics & Software)</p>
                     </div>
                     <div class="edu-timeline">
                         September 2021 - May 2026<br>
@@ -830,7 +193,8 @@
     <!-- Projects Section -->
     <div class="section-container" id="projects">
         <div class="container">
-            <h2 class="section-title">Projects</h2>
+            <p class="section-kicker">Projects</p>
+            <h2 class="section-title">Selected work across analytics, product, and growth.</h2>
             <div class="projects-grid">
                 <!-- Hashbook Project -->
                 <div class="project-card">
@@ -843,7 +207,7 @@
                         <span class="tech-item">PostgreSQL</span>
                     </div>
                     <div class="project-description">
-                        <p>A dynamic idea-sharing platform featuring:</p>
+                        <p>Idea-sharing platform built to test community growth mechanics:</p>
                         <ul class="project-features">
                             <li>User authentication and profile management</li>
                             <li>Full CRUD functionality for posts</li>
@@ -872,7 +236,7 @@
                         <span class="tech-item">Data Analysis</span>
                     </div>
                     <div class="project-description">
-                        <p>Women-focused ride-hailing service analysis featuring:</p>
+                        <p>Market entry analysis for a women-focused ride-hailing service:</p>
                         <ul class="project-features">
                             <li>Choice-based conjoint analysis (300 respondents)</li>
                             <li>Market share simulation model (16.1% projected)</li>
@@ -900,7 +264,7 @@
                         <span class="tech-item">Responsive Design</span>
                     </div>
                     <div class="project-description">
-                        <p>A modern, responsive portfolio website featuring:</p>
+                        <p>A responsive portfolio experience designed for recruiter clarity:</p>
                         <ul class="project-features">
                             <li>Dynamic education section with animated course cards</li>
                             <li>Interactive project showcase with GitHub links</li>
@@ -923,45 +287,67 @@
     <!-- Skills Section -->
     <div class="section-container" id="skills">
         <div class="container">
-            <h2 class="section-title">Skills</h2>
+            <p class="section-kicker">Capabilities</p>
+            <h2 class="section-title">A toolkit built for analytics, growth, and delivery.</h2>
             <div class="skills-grid">
                 <div class="skill-card">
-                    <i class="fas fa-brain"></i>
-                    <h4>Problem Solving</h4>
-                    <p>Algorithmic thinking & analysis</p>
+                    <i class="fas fa-chart-line"></i>
+                    <h4>Analytics & Insights</h4>
+                    <p>Python, Pandas, SQL, Matplotlib</p>
                 </div>
                 <div class="skill-card">
                     <i class="fas fa-database"></i>
-                    <h4>Data Analysis</h4>
-                    <p>Python, Pandas, Matplotlib, R</p>
+                    <h4>BI & Visualization</h4>
+                    <p>Power BI, Excel, KPI storytelling</p>
                 </div>
                 <div class="skill-card">
                     <i class="fas fa-code"></i>
-                    <h4>Web Development</h4>
-                    <p>Django, Bootstrap, HTML/CSS</p>
+                    <h4>Product & Web</h4>
+                    <p>Django, HTML/CSS, Bootstrap</p>
                 </div>
                 <div class="skill-card">
-                    <i class="fas fa-chart-bar"></i>
-                    <h4>Business Analytics</h4>
-                    <p>Excel, Power BI</p>
+                    <i class="fas fa-bullseye"></i>
+                    <h4>Go-to-Market</h4>
+                    <p>Market research, pricing, growth</p>
                 </div>
                 <div class="skill-card">
                     <i class="fas fa-users"></i>
-                    <h4>Interpersonal Skills</h4>
-                    <p>Presentation & Communication</p>
+                    <h4>Communication</h4>
+                    <p>Stakeholder alignment & storytelling</p>
                 </div>
                 <div class="skill-card">
                     <i class="fas fa-code-branch"></i>
-                    <h4>Version Control</h4>
-                    <p>Git, GitHub</p>
+                    <h4>Workflow</h4>
+                    <p>Git, GitHub, agile delivery</p>
                 </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Section -->
+    <div class="section-container" id="contact">
+        <div class="container contact-card">
+            <div>
+                <p class="section-kicker">Contact</p>
+                <h2 class="section-title">Open to analytics, growth, and strategy roles.</h2>
+                <p class="about-text">
+                    Interested in collaborating or hiring? Let’s build something meaningful together.
+                </p>
+            </div>
+            <div class="contact-actions">
+                <a class="btn btn-custom" href="mailto:itsmehtabahmad@gmail.com">
+                    <i class="fas fa-envelope"></i> Email Me
+                </a>
+                <a class="btn btn-outline" href="https://linkedin.com/in/mehtabehmad" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-linkedin"></i> LinkedIn
+                </a>
             </div>
         </div>
     </div>
 
     <!-- Footer -->
     <div class="footer">
-        <p>&copy; 2025 Mehtab Ahmad</p>
+        <p>&copy; 2025 Mehtab Ahmad · Built with data, design, and curiosity.</p>
         <div>
             <a href="https://github.com/mehtabehmad" class="mx-2" rel="noopener noreferrer">
                 <i class="fab fa-github fa-2x"></i>
@@ -975,54 +361,6 @@
         </div>
     </div>
 
-    <script>
-        // Scroll Progress
-        window.addEventListener('scroll', () => {
-            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-            const scrolled = (winScroll / height) * 100;
-            document.querySelector('.scroll-progress').style.width = scrolled + '%';
-        });
-
-        // Intersection Observer
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if(entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, { threshold: 0.1 });
-
-        document.querySelectorAll('.section-container').forEach((section) => {
-            observer.observe(section);
-        });
-
-        // Smooth Scroll
-        function smoothScroll(target) {
-            const element = document.querySelector(target);
-            window.scrollTo({
-                top: element.offsetTop,
-                behavior: 'smooth'
-            });
-        }
-
-        // Anchor Link Handling
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                smoothScroll(this.getAttribute('href'));
-            });
-        });
-
-        // Project Card Expansion
-        document.querySelectorAll('.read-more').forEach(btn => {
-            btn.addEventListener('click', function() {
-                const card = this.closest('.project-card');
-                if(card.classList.contains('expanded')) {
-                    card.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
-            });
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
