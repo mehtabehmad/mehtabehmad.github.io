@@ -3,275 +3,232 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mehtab | Data Analyst & Web Developer</title>
-    <meta name="description" content="Mehtab Ahmad - Management Science student, Aspiring Data Analyst and Python web developer portfolio. Explore projects and skills in data analysis and web development.">
-    
-    <!-- Bootstrap & Google Fonts -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    
+    <title>Mehtab Ahmad | Data, Product & Digital Experiences</title>
+    <meta name="description" content="Mehtab Ahmad is a Management Science student and emerging data/product builder creating insightful analytics, market research, and high-quality web experiences.">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Mehtab Ahmad | Data, Product & Digital Experiences">
+    <meta property="og:description" content="Explore projects, case studies, and services across analytics, strategy, and modern web development.">
+    <meta property="og:image" content="profile_image.jpg">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Mehtab Ahmad | Data, Product & Digital Experiences">
+    <meta name="twitter:description" content="Portfolio of Mehtab Ahmad featuring analytics, case studies, and digital products.">
+    <meta name="twitter:image" content="profile_image.jpg">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="scroll-progress"></div>
+    <div class="scroll-progress" aria-hidden="true"></div>
 
-    <!-- Hero Section -->
-    <section class="hero-section">
-        <p class="hero-title">Hi, I'm Mehtab.</p>
-        <p class="lead">Aspiring Data Analyst & Web Developer</p>
-        <a class="btn btn-custom" href="#about-me">Know More</a>
-        <div class="scroll-down" onclick="smoothScroll('#about-me')">
-            <i class="fas fa-chevron-down fa-2x text-white"></i>
+    <header class="site-header" id="top">
+        <div class="container nav-wrap">
+            <a href="#home" class="brand">Mehtab Ahmad</a>
+            <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="site-nav">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+            <nav id="site-nav" class="site-nav" aria-label="Primary">
+                <a href="#about">About</a>
+                <a href="#work">Work</a>
+                <a href="#services">Services</a>
+                <a href="#skills">Skills</a>
+                <a href="#contact">Contact</a>
+            </nav>
         </div>
-    </section>
+    </header>
 
-    <!-- About Section -->
-    <div class="section-container" id="about-me">
-        <div class="container">
-            <div class="about-card">
-                <img src="profile_image.jpg" alt="Mehtab Ahmad" class="about-photo">
-                <h2 class="section-title">About Me</h2>
-                <p class="about-text">
-                    A <strong>Management Science student</strong> at <strong>LUMS</strong>, pursuing a minor in <strong>Computer Science</strong>. Passionate about creating <span class="highlight">data-driven solutions</span> and <span class="highlight">web applications</span> that solve real-world problems.
+    <main>
+        <section class="hero" id="home">
+            <div class="hero-bg" aria-hidden="true"></div>
+            <div class="container hero-content reveal-up">
+                <p class="eyebrow">Data · Strategy · Product</p>
+                <h1>Building digital work that feels clear, useful, and unforgettable.</h1>
+                <p class="hero-subtext">
+                    I’m Mehtab — a Management Science student at LUMS who blends analytics, product thinking,
+                    and modern web design to solve real problems.
                 </p>
-                <p class="about-text">
-                    Always up for contributing to impactful projects—let’s connect!
-                </p>
-                <div class="about-buttons">
-                    <a href="https://drive.google.com/file/d/10ZuUUtB2A49Ghk9YHQiaur56YnPDoUmm/view" 
-                       class="btn-about" 
-                       target="_blank">
-                        <i class="fas fa-file-alt"></i> Resume
-                    </a>
-                    <a href="mailto:itsmehtabahmad@gmail.com" 
-                       class="btn-about">
-                        <i class="fas fa-envelope"></i> Email
-                    </a>
+                <div class="hero-actions">
+                    <a href="#work" class="btn btn-primary">Explore Work</a>
+                    <a href="mailto:itsmehtabahmad@gmail.com" class="btn btn-secondary">Start a Conversation</a>
+                </div>
+                <div class="hero-metrics">
+                    <article><span>300+</span><small>research respondents analyzed</small></article>
+                    <article><span>16.1%</span><small>projected share in market simulation</small></article>
+                    <article><span>8+</span><small>cross-disciplinary courses in tech + business</small></article>
                 </div>
             </div>
-        </div>
-    </div>
+            <button class="scroll-indicator" data-target="#about" aria-label="Scroll down">
+                <i class="fa-solid fa-chevron-down"></i>
+            </button>
+        </section>
 
-    <!-- Education Section -->
-    <div class="section-container" id="education">
-        <div class="container">
-            <h2 class="section-title">Education</h2>
-            <div class="edu-card">
-                <div class="edu-header">
-                    <div class="lums-logo-container">
-                        <img src="lums-logo.png" alt="LUMS Logo" class="lums-logo">
+        <section class="section" id="about">
+            <div class="container about-grid">
+                <article class="about-card reveal-up">
+                    <h2>About Me</h2>
+                    <p>
+                        I focus on turning complexity into clarity — whether through dashboards, market modeling,
+                        or digital products. My work combines analytical rigor with strong communication so insights
+                        become decisions.
+                    </p>
+                    <p>
+                        I’m currently looking for internships and collaborations where I can contribute to
+                        data-driven growth, product strategy, and user-centric web experiences.
+                    </p>
+                    <div class="about-actions">
+                        <a href="https://drive.google.com/file/d/10ZuUUtB2A49Ghk9YHQiaur56YnPDoUmm/view" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+                            <i class="fa-regular fa-file-lines"></i> View Resume
+                        </a>
+                        <a href="#contact" class="btn btn-secondary"><i class="fa-regular fa-message"></i> Contact Me</a>
                     </div>
-                    <div class="degree-info">
-                        <h4>BSc (Hons.) Management Science</h4>
-                        <div class="edu-institution">
-                            Lahore University of Management Sciences
+                </article>
+                <aside class="profile-card reveal-up">
+                    <img src="profile_image.jpg" alt="Portrait of Mehtab Ahmad" loading="lazy">
+                    <h3>Mehtab Ahmad</h3>
+                    <p>Management Science @ LUMS<br>Minor in Computer Science</p>
+                    <div class="profile-links">
+                        <a href="https://github.com/mehtabehmad" aria-label="GitHub" rel="noopener noreferrer"><i class="fab fa-github"></i></a>
+                        <a href="https://linkedin.com/in/mehtabehmad" aria-label="LinkedIn" rel="noopener noreferrer"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://instagram.com/mehtabehmad" aria-label="Instagram" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </aside>
+            </div>
+        </section>
+
+        <section class="section alt" id="work">
+            <div class="container">
+                <div class="section-head reveal-up">
+                    <p class="eyebrow">Selected Work</p>
+                    <h2>Case studies that deliver measurable outcomes.</h2>
+                </div>
+
+                <article class="featured-case reveal-up">
+                    <div>
+                        <p class="tag">Featured Case</p>
+                        <h3>FemRides Analytics — Market Entry Intelligence</h3>
+                        <p>
+                            Designed a data-backed go-to-market recommendation for a women-focused ride-hailing concept,
+                            combining conjoint analysis, segmentation logic, and competitor simulation.
+                        </p>
+                        <a href="https://drive.google.com/file/d/1MaBajfcxYlxzemm_G0NfkrxlOkKXXc4U/view?usp=share_link" target="_blank" rel="noopener noreferrer" class="text-link">
+                            View Full Case Study <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+                    <div class="stats-grid">
+                        <article><span>300</span><small>respondents</small></article>
+                        <article><span>16.1%</span><small>projected share</small></article>
+                        <article><span>3</span><small>competitive scenarios</small></article>
+                        <article><span>1</span><small>strategic recommendation</small></article>
+                    </div>
+                </article>
+
+                <div class="projects-grid">
+                    <article class="project-card reveal-up">
+                        <p class="tag">Product Engineering</p>
+                        <h3>Hashbook</h3>
+                        <p class="project-summary">A social idea-sharing web platform built with robust CRUD workflows and user engagement features.</p>
+                        <ul>
+                            <li>Authentication, profile management, and secure workflows</li>
+                            <li>Posts, hashtags, likes, and comment interaction loops</li>
+                            <li>Responsive UI and PostgreSQL-backed data model</li>
+                        </ul>
+                        <div class="chips">
+                            <span>Python</span><span>Django</span><span>Bootstrap</span><span>PostgreSQL</span>
                         </div>
-                    </div>
-                    <div class="edu-timeline">
-                        September 2021 - May 2026<br>
-                        <small>(Expected Graduation)</small>
-                    </div>
-                </div>
+                        <a href="https://github.com/mehtabehmad/Hashbook.git" target="_blank" rel="noopener noreferrer" class="text-link">View Code <i class="fa-solid fa-arrow-right"></i></a>
+                    </article>
 
-                <h5 class="edu-subtitle">
-                    <i class="fas fa-book-open"></i>
-                    Key Courses
-                </h5>
-                
-                <ul class="edu-courses">
-                    <li>
-                        <i class="fas fa-laptop-code"></i>
-                        <span class="course-name">Computational Problem Solving</span>
-                        <span class="course-code" style="background: linear-gradient(45deg, #FF512F, #F09819);">CS100</span>
-                    </li>
-                    <li>
-                        <i class="fas fa-code"></i>
-                        <span class="course-name">Introduction to Programming</span>
-                        <span class="course-code" style="background: linear-gradient(45deg, #1E90FF, #00BFFF);">CS200</span>
-                    </li>
-                    <li>
-                        <i class="fas fa-chart-line"></i>
-                        <span class="course-name">Marketing Models</span>
-                        <span class="course-code" style="background: linear-gradient(45deg, #FF416C, #FF4B2B);">MKTG 343</span>
-                    </li>
-                    <li>
-                        <i class="fas fa-comments"></i>
-                        <span class="course-name">Business Communication</span>
-                        <span class="course-code" style="background: linear-gradient(45deg, #00b09b, #96c93d);">MGMT 212</span>
-                    </li>
-                    <li>
-                        <i class="fas fa-chart-bar"></i>
-                        <span class="course-name">Probability and Statistics</span>
-                        <span class="course-code" style="background: linear-gradient(45deg, #da22ff, #9733ee);">DISC 203</span>
-                    </li>
-                    <li>
-                        <i class="fas fa-shopping-cart"></i>
-                        <span class="course-name">Principles of Marketing</span>
-                        <span class="course-code" style="background: linear-gradient(45deg, #f46b45, #eea849);">MKTG 201</span>
-                    </li>
-                    <li>
-                        <i class="fas fa-database"></i>
-                        <span class="course-name">Data Analytics for New Product Development</span>
-                        <span class="course-code" style="background: linear-gradient(45deg, #1D976C, #93F9B9);">MKTG 345</span>
-                    </li>
-                    <li>
-                        <i class="fas fa-brain"></i>
-                        <span class="course-name">Principles and Techniques of Data Science</span>
-                        <span class="course-code" style="background: linear-gradient(45deg, #8E2DE2, #4A00E0);">CS 334</span>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
-
-    <!-- Projects Section -->
-    <div class="section-container" id="projects">
-        <div class="container">
-            <h2 class="section-title">Projects</h2>
-            <div class="projects-grid">
-                <!-- Hashbook Project -->
-                <div class="project-card">
-                    <span class="project-tag personal-tag">Personal</span>
-                    <h3><i class="fas fa-hashtag"></i> Hashbook</h3>
-                    <div class="project-tech">
-                        <span class="tech-item">Python</span>
-                        <span class="tech-item">Django</span>
-                        <span class="tech-item">Bootstrap</span>
-                        <span class="tech-item">PostgreSQL</span>
-                    </div>
-                    <div class="project-description">
-                        <p>A dynamic idea-sharing platform featuring:</p>
-                        <ul class="project-features">
-                            <li>User authentication and profile management</li>
-                            <li>Full CRUD functionality for posts</li>
-                            <li>Interactive social features (likes, comments, hashtags)</li>
-                            <li>Responsive and mobile-friendly UI with Bootstrap</li>
-                            <li>Optimized database management using PostgreSQL</li>
+                    <article class="project-card reveal-up">
+                        <p class="tag">Design + Development</p>
+                        <h3>Portfolio Platform</h3>
+                        <p class="project-summary">A high-impact personal portfolio focused on storytelling, performance, and modern interaction design.</p>
+                        <ul>
+                            <li>Responsive layout system and high-contrast visual design</li>
+                            <li>Clean information hierarchy for credibility and conversion</li>
+                            <li>Micro-interactions that stay lightweight and purposeful</li>
                         </ul>
-                    </div>
-                    <span class="read-more" onclick="this.closest('.project-card').classList.toggle('expanded')">
-                        Read More
-                    </span>
-                    <a href="https://github.com/mehtabehmad/Hashbook.git" class="project-link" target="_blank" rel="noopener noreferrer">
-                        <i class="fab fa-github"></i> View Code
-                    </a>
-                </div>
-
-                <!-- FemRides Project -->
-                <div class="project-card">
-                    <span class="project-tag academic-tag">Academic</span>
-                    <h3><i class="fas fa-car-side"></i> FemRides Analytics</h3>
-                    <div class="project-tech">
-                        <span class="tech-item">R Programming</span>
-                        <span class="tech-item">Sawtooth</span>
-                        <span class="tech-item">mlogit</span>
-                        <span class="tech-item">Market Research</span>
-                        <span class="tech-item">Data Analysis</span>
-                    </div>
-                    <div class="project-description">
-                        <p>Women-focused ride-hailing service analysis featuring:</p>
-                        <ul class="project-features">
-                            <li>Choice-based conjoint analysis (300 respondents)</li>
-                            <li>Market share simulation model (16.1% projected)</li>
-                            <li>Competitive benchmarking vs Yango/InDriver/Careem</li>
-                            <li>Dynamic pricing strategy development</li>
-                        </ul>
-                    </div>
-                    <span class="read-more" onclick="this.closest('.project-card').classList.toggle('expanded')">
-                        Read More
-                    </span>
-                    <a href="https://drive.google.com/file/d/1MaBajfcxYlxzemm_G0NfkrxlOkKXXc4U/view?usp=share_link" class="project-link" target="_blank" rel="noopener noreferrer">
-                        <i class="fas fa-file-alt"></i> View Project
-                    </a>
-                </div>
-
-                <!-- Portfolio Website Project -->
-                <div class="project-card">
-                    <span class="project-tag personal-tag">Personal</span>
-                    <h3><i class="fas fa-laptop-code"></i> Portfolio Website</h3>
-                    <div class="project-tech">
-                        <span class="tech-item">HTML5</span>
-                        <span class="tech-item">CSS3</span>
-                        <span class="tech-item">JavaScript</span>
-                        <span class="tech-item">Bootstrap</span>
-                        <span class="tech-item">Responsive Design</span>
-                    </div>
-                    <div class="project-description">
-                        <p>A modern, responsive portfolio website featuring:</p>
-                        <ul class="project-features">
-                            <li>Dynamic education section with animated course cards</li>
-                            <li>Interactive project showcase with GitHub links</li>
-                            <li>Skills matrix with hover effects</li>
-                            <li>Mobile-first responsive layout</li>
-                            <li>Custom gradient-based theme</li>
-                        </ul>
-                    </div>
-                    <span class="read-more" onclick="this.closest('.project-card').classList.toggle('expanded')">
-                        Read More
-                    </span>
-                    <a href="https://github.com/mehtabehmad/mehtabehmad.github.io.git" class="project-link" target="_blank" rel="noopener noreferrer">
-                        <i class="fab fa-github"></i> View Code
-                    </a>
+                        <div class="chips">
+                            <span>HTML5</span><span>CSS3</span><span>JavaScript</span><span>UX Writing</span>
+                        </div>
+                        <a href="https://github.com/mehtabehmad/mehtabehmad.github.io.git" target="_blank" rel="noopener noreferrer" class="text-link">View Code <i class="fa-solid fa-arrow-right"></i></a>
+                    </article>
                 </div>
             </div>
-        </div>
-    </div>
+        </section>
 
-    <!-- Skills Section -->
-    <div class="section-container" id="skills">
-        <div class="container">
-            <h2 class="section-title">Skills</h2>
-            <div class="skills-grid">
-                <div class="skill-card">
-                    <i class="fas fa-brain"></i>
-                    <h4>Problem Solving</h4>
-                    <p>Algorithmic thinking & analysis</p>
+        <section class="section" id="services">
+            <div class="container">
+                <div class="section-head reveal-up">
+                    <p class="eyebrow">How I Add Value</p>
+                    <h2>Services I can contribute to teams and products.</h2>
                 </div>
-                <div class="skill-card">
-                    <i class="fas fa-database"></i>
-                    <h4>Data Analysis</h4>
-                    <p>Python, Pandas, Matplotlib, R</p>
-                </div>
-                <div class="skill-card">
-                    <i class="fas fa-code"></i>
-                    <h4>Web Development</h4>
-                    <p>Django, Bootstrap, HTML/CSS</p>
-                </div>
-                <div class="skill-card">
-                    <i class="fas fa-chart-bar"></i>
-                    <h4>Business Analytics</h4>
-                    <p>Excel, Power BI</p>
-                </div>
-                <div class="skill-card">
-                    <i class="fas fa-users"></i>
-                    <h4>Interpersonal Skills</h4>
-                    <p>Presentation & Communication</p>
-                </div>
-                <div class="skill-card">
-                    <i class="fas fa-code-branch"></i>
-                    <h4>Version Control</h4>
-                    <p>Git, GitHub</p>
+                <div class="services-grid">
+                    <article class="service-card reveal-up">
+                        <i class="fa-solid fa-chart-line"></i>
+                        <h3>Analytics & BI</h3>
+                        <p>Build decision-ready dashboards and analyses that uncover growth opportunities.</p>
+                    </article>
+                    <article class="service-card reveal-up">
+                        <i class="fa-solid fa-users-viewfinder"></i>
+                        <h3>Market Research</h3>
+                        <p>Translate user data and market signals into strategic direction and product priorities.</p>
+                    </article>
+                    <article class="service-card reveal-up">
+                        <i class="fa-solid fa-laptop-code"></i>
+                        <h3>Web Experiences</h3>
+                        <p>Create polished, responsive digital interfaces that communicate value clearly.</p>
+                    </article>
                 </div>
             </div>
-        </div>
-    </div>
+        </section>
 
-    <!-- Footer -->
-    <div class="footer">
-        <p>&copy; 2025 Mehtab Ahmad</p>
-        <div>
-            <a href="https://github.com/mehtabehmad" class="mx-2" rel="noopener noreferrer">
-                <i class="fab fa-github fa-2x"></i>
-            </a>
-            <a href="https://linkedin.com/in/mehtabehmad" class="mx-2" rel="noopener noreferrer">
-                <i class="fab fa-linkedin fa-2x"></i>
-            </a>
-            <a href="https://instagram.com/mehtabehmad" class="mx-2" rel="noopener noreferrer">
-                <i class="fab fa-instagram fa-2x"></i>
-            </a>
+        <section class="section alt" id="skills">
+            <div class="container">
+                <div class="section-head reveal-up">
+                    <p class="eyebrow">Capability Stack</p>
+                    <h2>Skills across data, business, and product execution.</h2>
+                </div>
+                <div class="skills-layout">
+                    <article class="skill-column reveal-up">
+                        <h3>Data & Analytics</h3>
+                        <p>Python, Pandas, R, Statistical Modeling, Dashboard Storytelling</p>
+                    </article>
+                    <article class="skill-column reveal-up">
+                        <h3>Product & Strategy</h3>
+                        <p>Consumer Research, Conjoint Analysis, Competitive Benchmarking, GTM Thinking</p>
+                    </article>
+                    <article class="skill-column reveal-up">
+                        <h3>Engineering & Delivery</h3>
+                        <p>HTML/CSS/JavaScript, Django, Git/GitHub, Responsive Development</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="section cta" id="contact">
+            <div class="container cta-card reveal-up">
+                <p class="eyebrow">Let’s Build Something Meaningful</p>
+                <h2>Open to internships, freelance projects, and high-impact collaborations.</h2>
+                <div class="cta-actions">
+                    <a href="mailto:itsmehtabahmad@gmail.com" class="btn btn-primary"><i class="fa-regular fa-paper-plane"></i> Email Me</a>
+                    <a href="https://linkedin.com/in/mehtabehmad" target="_blank" rel="noopener noreferrer" class="btn btn-secondary"><i class="fab fa-linkedin"></i> Connect on LinkedIn</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-wrap">
+            <p>© 2025 Mehtab Ahmad. Designed with precision and intent.</p>
+            <a href="#top" class="text-link">Back to top <i class="fa-solid fa-arrow-up"></i></a>
         </div>
-    </div>
+    </footer>
 
     <script src="script.js"></script>
 </body>
